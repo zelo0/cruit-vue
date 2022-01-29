@@ -1,17 +1,15 @@
 <template>
   <div>
-    <the-header />
+    <TheHeader />
     <div class="container md:w-4/5">
-      <stack-list />
+      <StackList />
+      <ProjectList />
     </div>
   </div>
 </template>
 
 <script>
-import StackList from '~/components/StackList.vue'
-import TheHeader from '~/components/TheHeader.vue'
 export default {
-  components: { StackList, TheHeader },
   name: 'IndexPage',
 }
 </script>
