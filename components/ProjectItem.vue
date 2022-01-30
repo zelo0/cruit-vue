@@ -10,32 +10,32 @@
     </div>
 
     <!-- 프론트엔드 파트 -->
-    <ProjectPart class="my-2" :part="project.frontendPart">
+    <ProjectPart :part="project.frontendPart">
       <template v-slot:partKind>
         <div>프론트엔드</div>
       </template>
     </ProjectPart>
 
     <!-- 백엔드 파트 -->
-    <ProjectPart class="my-2" :part="project.backendPart">
+    <ProjectPart :part="project.backendPart">
       <template v-slot:partKind>
         <div>백엔드</div>
       </template>
     </ProjectPart>
 
     <!-- 디자인 파트 -->
-    <ProjectPart class="my-2" :part="project.designPart">
+    <ProjectPart :part="project.designPart">
       <template v-slot:partKind>
         <div>디자인</div>
       </template>
     </ProjectPart>
 
-    <div class="my-2">
+    <!-- <div class="my-2">
       <div class="font-bold">설명</div>
       <div>
         {{ project.description }}
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

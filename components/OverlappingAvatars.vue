@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="m-3 flex -space-x-2 overflow-hidden">
+  <div class="flex -space-x-2 overflow-hidden">
     <Avatar
       v-for="(image, index) in imageList"
       :key="index"

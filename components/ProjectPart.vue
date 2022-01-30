@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="border-b-2 border-gray-400">
+  <div class="py-2 border-t-2 border-gray-400">
     <!-- 파트 이름 -->
     <div class="font-bold">
       <slot name="partKind"></slot>
@@ -14,10 +14,12 @@
 
     <!-- 파트원들의 프로필 이미지들 -->
     <div class="pb-1">
-      <Pill>멤버</Pill>
-      <OverlappingAvatars
-        :imageList="part.partMembers.map((member) => member.profile)"
-      ></OverlappingAvatars>
+      <div class="flex">
+        <Pill>멤버</Pill>
+        <OverlappingAvatars
+          :imageList="part.partMembers.map((member) => member.profile)"
+        ></OverlappingAvatars>
+      </div>
     </div>
   </div>
 </template>
