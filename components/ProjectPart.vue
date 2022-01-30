@@ -1,5 +1,5 @@
 <template lang="">
-  <div>
+  <div class="border-b-2 border-gray-400">
     <!-- 파트 이름 -->
     <div class="font-bold">
       <slot name="partKind"></slot>
