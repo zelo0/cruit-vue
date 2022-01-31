@@ -2,7 +2,7 @@
   <div>
     <TheHeader />
     <div class="container md:w-4/5">
-      <StackList />
+      <SearchFilter />
       <ProjectList />
     </div>
   </div>
