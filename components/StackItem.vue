@@ -15,10 +15,10 @@ export default {
   },
   methods: {
     ...mapMutations ({
-      addStackFilter: 'filter/addStackFilter',
-      removeStackFilter: 'filter/removeStackFilter'
+      addStackFilter: 'projects/addStackFilter',
+      removeStackFilter: 'projects/removeStackFilter'
     }),
-    onclick: function (event ,target){
+    onclick(event, target) {
       this.isSelected = !this.isSelected
       if (this.isSelected) {
         this.addStackFilter(this.data.name)

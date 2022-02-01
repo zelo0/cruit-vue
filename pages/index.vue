@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader />
-    <div class="container md:w-4/5">
+    <div class="container md:w-4/5 p-4">
       <SearchFilter />
       <ProjectList />
     </div>

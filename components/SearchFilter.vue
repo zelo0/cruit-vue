@@ -1,8 +1,8 @@
 <template lang="">
-  <div>
-    <h2 class="p-2 font-bold">원하는 스택의 프로젝트, 팀원을 찾아보세요</h2>
+  <div class="my-5">
+    <h2 class="font-bold">원하는 스택의 프로젝트를 찾아보세요</h2>
     <hr />
-    <div class="p-5">
+    <div class="py-5">
       <h2 class="text-lg font-bold mb-5">프론트엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <StackItem
@@ -12,7 +12,7 @@
         />
       </div>
     </div>
-    <div class="p-5">
+    <div class="py-5">
       <h2 class="text-lg font-bold mb-5">백엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <StackItem
@@ -22,15 +22,30 @@
         />
       </div>
     </div>
+
+    <div class="flex justify-start">
+      <button
+        @click="getProjectsByFilter"
+        class="border-2 rounded-xl p-2 font-semibold hover:bg-blue-200"
+      >
+        검색
+      </button>
+    </div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     return {
       frontendStacks: [],
       backendStacks: [],
     }
+  },
+  methods: {
+    ...mapActions({
+      getProjectsByFilter: 'projects/getProjectsByFilter',
+    }),
   },
   async fetch() {
     await this.$axios
@@ -46,7 +61,7 @@ export default {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log('에러 발생')
       })
   },
 }

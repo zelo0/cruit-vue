@@ -6,10 +6,12 @@
     </div>
     <!-- 사용 스택 이미지들 -->
     <div class="pb-1">
-      <Pill>사용 스택</Pill>
-      <OverlappingAvatars
-        :imageList="part.stacks.map((stack) => stack.image)"
-      ></OverlappingAvatars>
+      <div class="flex">
+        <Pill>사용 스택</Pill>
+        <OverlappingAvatars
+          :imageList="part.stacks.map((stack) => stack.image)"
+        ></OverlappingAvatars>
+      </div>
     </div>
 
     <!-- 파트원들의 프로필 이미지들 -->
