@@ -1,8 +1,18 @@
 <template lang="">
   <div class="py-2 border-t-2 border-gray-400">
-    <!-- 파트 이름 -->
-    <div class="font-bold">
+    <!-- 파트 이름 + 모집 여부 -->
+    <div class="font-bold flex gap-2">
+      <!-- 파트 이름 -->
       <slot name="partKind"></slot>
+      <BreadCrumb></BreadCrumb>
+      <!-- 모집 여부 -->
+      <div
+        v-if="part.status == 'RECRUITING'"
+        class="text-blue-500 ring-blue-200"
+      >
+        모집 중
+      </div>
+      <div v-else class="text-gray-400">모집 완료</div>
     </div>
     <!-- 사용 스택 이미지들 -->
     <div class="pb-1">

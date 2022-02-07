@@ -2,13 +2,6 @@
   <div class="ring-2 rounded-xl p-4">
     <h2 class="text-lg font-black">{{ project.name }}</h2>
 
-    <div class="my-2">
-      <div v-if="project.status == 'RECRUITING'" class="font-bold text-blue-500">
-        {{ project.status }}
-      </div>
-      <div v-else class="font-bold text-gray-700">{{ project.status }}</div>
-    </div>
-
     <!-- 프론트엔드 파트 -->
     <ProjectPart :part="project.frontendPart">
       <template v-slot:partKind>

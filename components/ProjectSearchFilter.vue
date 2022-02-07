@@ -31,6 +31,8 @@
         검색
       </button>
     </div>
+
+    <hr class="mt-5" />
   </div>
 </template>
 <script>

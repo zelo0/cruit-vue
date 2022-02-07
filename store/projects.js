@@ -2,13 +2,11 @@ export const state = () => ({
   stackFilters: [],
   projects: [],
   hasError: false,
+  hasPrevious: false,
+  hasNext: false,
+  totalPage: 0,
+  currentPage: 0,
 })
-
-// export const getters = {
-//   projects(state) {
-//     return state.projects
-//   },
-// }
 
 export const mutations = {
   addStackFilter(state, text) {
@@ -23,27 +21,55 @@ export const mutations = {
   setHasError(state, hasError) {
     state.hasError = hasError
   },
+  setHasPrevious(state, hasPrevious) {
+    state.hasPrevious = hasPrevious
+  },
+  setHasNext(state, hasNext) {
+    state.hasNext = hasNext
+  },
+  setTotalPage(state, totalPage) {
+    state.totalPage = totalPage
+  },
+  setCurrentPage(state, currentPage) {
+    state.currentPage = currentPage
+  },
+  increaseCurrentPage(state) {
+    state.currentPage += 1
+  },
+  decreaseCurrentPage(state) {
+    state.currentPage -= 1
+  },
 }
 
 export const actions = {
   async getProjectsByFilter({ commit, state }) {
     await this.$axios
-      .$get(`/projects?q=${state.stackFilters.join(';')}`)
+      .$get(
+        `/projects?q=${state.stackFilters.join(';')}&page=${state.currentPage}`
+      )
       .then((res) => {
         commit('setProjects', res.data)
+        commit('setHasPrevious', res.hasPrevious)
+        commit('setHasNext', res.hasNext)
+        commit('setTotalPage', res.totalPage)
+        commit('setCurrentPage', res.currentPage)
       })
       .catch((err) => {
         commit('setHasError', true)
       })
   },
-  async getProjectsByNoFilter({ commit }) {
-    await this.$axios
-      .$get('/projects')
-      .then((res) => {
-        commit('setProjects', res.data)
-      })
-      .catch((err) => {
-        commit('setHasError', true)
-      })
-  },
+  // async getProjectsByNoFilter({ commit, state }) {
+  //   await this.$axios
+  //     .$get(`/projects?page=${state.currentPage}`)
+  //     .then((res) => {
+  //       commit('setProjects', res.data)
+  //       commit('setHasPrevious', res.hasPrevious)
+  //       commit('setHasNext', res.hasNext)
+  //       commit('setTotalPage', res.totalPage)
+  //       commit('setCurrentPage', res.currentPage)
+  //     })
+  //     .catch((err) => {
+  //       commit('setHasError', true)
+  //     })
+  // },
 }
