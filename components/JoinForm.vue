@@ -14,6 +14,7 @@
         이메일
       </label>
       <input
+        @change="validateEmail"
         v-model="form.email"
         aria-labelledby="email"
         type="email"
@@ -29,6 +30,7 @@
         닉네임
       </label>
       <input
+        @change="validateName"
         v-model="form.name"
         aria-labelledby="name"
         type="text"
@@ -45,6 +47,7 @@
       </label>
       <div class="relative flex items-center justify-center">
         <input
+          @change="validatePassword"
           v-model="form.password"
           id="pass"
           type="password"
@@ -78,6 +81,7 @@
         포지션
       </label>
       <select
+        @change="validatePosition"
         v-model="form.position"
         name="position"
         id="position"
@@ -109,8 +113,6 @@ import {
   required,
   minLength,
   maxLength,
-  sameAs,
-  or,
   and,
   email,
 } from 'vuelidate/lib/validators'
@@ -156,10 +158,8 @@ export default {
     },
   },
   methods: {
-    submit() {
-      this.$v.$touch()
-
-      /* 이메일 검증 */
+    /* 이메일 검증 */
+    validateEmail() {
       // 이메일을 안 적었으면
       if (!this.$v.form.email.required) {
         this.errorMessage.email = '이메일은 필수 항목입니다'
@@ -172,22 +172,24 @@ export default {
       if (!this.$v.form.email.$anyError) {
         this.errorMessage.email = ''
       }
-
-      /* 닉네임 검증 */
+    },
+    /* 닉네임 검증 */
+    validateName() {
       // 닉네임을 안 적었으면
       if (!this.$v.form.name.required) {
         this.errorMessage.name = '닉네임은 필수 항목입니다'
       }
-      // 이메일 형식이 아니면
+      // 닉네임 형식이 아니면
       if (!this.$v.form.name.maxLength) {
         this.errorMessage.name = '닉네임은 최대 30글자까지 가능합니다'
       }
-      // 이메일이 모든 검증을 통과하면
+      // 닉네임이 모든 검증을 통과하면
       if (!this.$v.form.name.$anyError) {
         this.errorMessage.name = ''
       }
-
-      /* 비밀번호 검증 */
+    },
+    /* 비밀번호 검증 */
+    validatePassword() {
       // 비밀번호를 안 적었으면
       if (!this.$v.form.password.required) {
         this.errorMessage.password = '비밀번호는 필수 항목입니다'
@@ -200,8 +202,9 @@ export default {
       if (!this.$v.form.password.$anyError) {
         this.errorMessage.password = ''
       }
-
-      /* 포지션 검증 */
+    },
+    /* 포지션 검증 */
+    validatePosition() {
       // 포지션을 선택 안 했으면
       if (!this.$v.form.position.required) {
         this.errorMessage.position = '포지션은 필수 항목입니다'
@@ -214,6 +217,15 @@ export default {
       if (!this.$v.form.position.$anyError) {
         this.errorMessage.position = ''
       }
+    },
+
+    submit() {
+      this.$v.$touch()
+      if (this.$v.form.$anyError) {
+        alert('회원가입 양식을 수정해주세요')
+        return
+      }
+      alert('제출 완료')
     },
   },
 }
