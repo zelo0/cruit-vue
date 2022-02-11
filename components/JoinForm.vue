@@ -9,6 +9,15 @@
       회원가입
     </p>
 
+    <div
+      v-show="serverErrorMessage"
+      class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold text-black mb-5"
+    >
+      <p>
+        {{ serverErrorMessage }}
+      </p>
+    </div>
+
     <div>
       <label id="email" class="text-sm font-medium leading-none text-gray-800">
         이메일
@@ -135,6 +144,7 @@ export default {
         password: '',
         position: '',
       },
+      serverErrorMessage: '',
     }
   },
   validations: {
@@ -160,6 +170,8 @@ export default {
   methods: {
     /* 이메일 검증 */
     validateEmail() {
+      this.$v.$touch()
+
       // 이메일을 안 적었으면
       if (!this.$v.form.email.required) {
         this.errorMessage.email = '이메일은 필수 항목입니다'
@@ -175,6 +187,7 @@ export default {
     },
     /* 닉네임 검증 */
     validateName() {
+      this.$v.$touch()
       // 닉네임을 안 적었으면
       if (!this.$v.form.name.required) {
         this.errorMessage.name = '닉네임은 필수 항목입니다'
@@ -190,6 +203,7 @@ export default {
     },
     /* 비밀번호 검증 */
     validatePassword() {
+      this.$v.$touch()
       // 비밀번호를 안 적었으면
       if (!this.$v.form.password.required) {
         this.errorMessage.password = '비밀번호는 필수 항목입니다'
@@ -205,6 +219,7 @@ export default {
     },
     /* 포지션 검증 */
     validatePosition() {
+      this.$v.$touch()
       // 포지션을 선택 안 했으면
       if (!this.$v.form.position.required) {
         this.errorMessage.position = '포지션은 필수 항목입니다'
@@ -218,14 +233,25 @@ export default {
         this.errorMessage.position = ''
       }
     },
-
+    async join() {
+      await this.$axios
+        .post('/users', this.form)
+        .then((res) => {
+          this.$router.push('/login')
+        })
+        .catch((err) => {
+          if (err.response.data.message) {
+            this.serverErrorMessage = err.response.data.message
+          }
+        })
+    },
     submit() {
       this.$v.$touch()
       if (this.$v.form.$anyError) {
         alert('회원가입 양식을 수정해주세요')
         return
       }
-      alert('제출 완료')
+      this.join()
     },
   },
 }
