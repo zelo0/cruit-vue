@@ -52,8 +52,8 @@ export default {
       this.getProjectsByFilter()
     },
   },
-  created() {
-    this.getProjectsByFilter()
+  async fetch() {
+    await this.getProjectsByFilter()
   },
 }
 </script>
