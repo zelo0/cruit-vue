@@ -10,13 +10,23 @@
       검색
     </div>
 
-    <div class="flex gap-5">
-      <nuxt-link to="/login" class="font-bold">로그인</nuxt-link>
-      <nuxt-link to="/join" class="font-bold">회원가입</nuxt-link>
+    <div>
+      <div v-show="myName">{{ myName }}</div>
+      <div class="flex gap-5" v-show="!myName">
+        <nuxt-link to="/login" class="font-bold">로그인</nuxt-link>
+        <nuxt-link to="/join" class="font-bold">회원가입</nuxt-link>
+      </div>
     </div>
   </div>
 </template>
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      myName: (state) => state.myName,
+    }),
+  },
+}
 </script>
 <style lang=""></style>

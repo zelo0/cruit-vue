@@ -9,7 +9,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'IndexPage',
+  methods: {
+    ...mapActions({
+      getMyName: 'getMyName',
+    }),
+  },
+  async mounted() {
+    await this.getMyName()
+  },
 }
 </script>
