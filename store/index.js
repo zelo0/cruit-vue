@@ -15,8 +15,6 @@ export const actions = {
       .then((res) => {
         commit('setMyName', res.data.nickname)
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => {})
   },
 }

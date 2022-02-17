@@ -17,7 +17,7 @@ export default {
       getMyName: 'getMyName',
     }),
   },
-  async mounted() {
+  async fetch() {
     await this.getMyName()
   },
 }

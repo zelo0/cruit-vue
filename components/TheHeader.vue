@@ -11,7 +11,10 @@
     </div>
 
     <div>
-      <div v-show="myName">{{ myName }}</div>
+      <div class="flex gap-5 font-bold" v-show="myName">
+        <span>{{ myName }}</span>
+        <span class="cursor-pointer" @click="logout">로그아웃</span>
+      </div>
       <div class="flex gap-5" v-show="!myName">
         <nuxt-link to="/login" class="font-bold">로그인</nuxt-link>
         <nuxt-link to="/join" class="font-bold">회원가입</nuxt-link>
@@ -20,12 +23,25 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   computed: {
     ...mapState({
       myName: (state) => state.myName,
     }),
+  },
+  methods: {
+    ...mapMutations({
+      setMyName: 'setMyName',
+    }),
+    async logout() {
+      await this.$axios
+        .post('/logout')
+        .then((data) => {
+          this.setMyName('')
+        })
+        .catch((err) => {})
+    },
   },
 }
 </script>

@@ -25,7 +25,7 @@
 
     <div class="flex justify-start">
       <button
-        @click="getProjectsByFilter"
+        @click="onSearch"
         class="border-2 rounded-xl p-2 font-semibold hover:bg-blue-200"
       >
         검색
@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -48,6 +48,13 @@ export default {
     ...mapActions({
       getProjectsByFilter: 'projects/getProjectsByFilter',
     }),
+    ...mapMutations({
+      setCurrentPage: 'projects/setCurrentPage',
+    }),
+    onSearch() {
+      this.setCurrentPage(0)
+      this.getProjectsByFilter()
+    },
   },
   async fetch() {
     await this.$axios
