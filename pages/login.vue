@@ -8,6 +8,6 @@
 
 <script>
 export default {
-  name: 'LoinPage',
+  name: 'LoginPage',
 }
 </script>
