@@ -9,6 +9,8 @@
           :data="item"
           v-for="(item, index) in frontendStacks"
           :key="index"
+          @onSelectStackItem="onSelectStackItem"
+          @onUnselectStackItem="onUnselectStackItem"
         />
       </div>
     </div>
@@ -19,17 +21,14 @@
           :data="item"
           v-for="(item, index) in backendStacks"
           :key="index"
+          @onSelectStackItem="onSelectStackItem"
+          @onUnselectStackItem="onUnselectStackItem"
         />
       </div>
     </div>
 
     <div class="flex justify-start">
-      <button
-        @click="onSearch"
-        class="border-2 rounded-xl p-2 font-semibold hover:bg-blue-200"
-      >
-        검색
-      </button>
+      <button @click="onSearch" class="myBtn">검색</button>
     </div>
 
     <hr class="mt-5" />
@@ -50,10 +49,18 @@ export default {
     }),
     ...mapMutations({
       setCurrentPage: 'projects/setCurrentPage',
+      addStackFilter: 'projects/addStackFilter',
+      removeStackFilter: 'projects/removeStackFilter',
     }),
     onSearch() {
       this.setCurrentPage(0)
       this.getProjectsByFilter()
+    },
+    onSelectStackItem(stackName) {
+      this.addStackFilter(stackName)
+    },
+    onUnselectStackItem(stackName) {
+      this.removeStackFilter(stackName)
     },
   },
   async fetch() {

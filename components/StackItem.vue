@@ -5,7 +5,6 @@
   </div>
 </template>
 <script>
-import {mapMutations} from 'vuex'
 export default {
   props: ['data'],
   data() {
@@ -14,16 +13,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations ({
-      addStackFilter: 'projects/addStackFilter',
-      removeStackFilter: 'projects/removeStackFilter'
-    }),
-    onclick(event, target) {
+    onclick() {
       this.isSelected = !this.isSelected
       if (this.isSelected) {
-        this.addStackFilter(this.data.name)
+        this.$emit('onSelectStackItem', this.data.name)
       } else {
-        this.removeStackFilter(this.data.name)
+        this.$emit('onUnselectStackItem', this.data.name)
       }
     }
   },
