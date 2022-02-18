@@ -12,7 +12,7 @@
 
     <div>
       <div class="flex gap-5 font-bold" v-show="myName">
-        <span>{{ myName }}</span>
+        <nuxt-link to="/me">{{ myName }}</nuxt-link>
         <span class="cursor-pointer" @click="logout">로그아웃</span>
       </div>
       <div class="flex gap-5" v-show="!myName">
