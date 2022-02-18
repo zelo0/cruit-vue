@@ -1,3 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  input[type='text'],
+  select,
+  textarea {
+    @apply ring-2 px-1;
+  }
+
+  textarea {
+    @apply w-full my-3 p-5;
+  }
+}
+
+@layer components {
+  .boldAndSpace {
+    @apply font-bold mr-4;
+  }
+  .myBtn {
+    @apply order-2 rounded-xl p-2 font-semibold hover:bg-blue-200 bg-blue-100 ml-2;
+  }
+  .inputBorder {
+    @apply;
+  }
+}
+
 html,
 body,
 #__nuxt,
