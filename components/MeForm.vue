@@ -14,7 +14,7 @@
     <hr />
 
     <div>
-      <lable class="boldAndSpace" for="position">포지션</lable>
+      <label class="boldAndSpace" for="position">포지션</label>
       <select id="position" v-model="me.position">
         <option value="FRONTEND">프론트엔드</option>
         <option value="BACKEND">백엔드</option>
@@ -31,7 +31,7 @@
         :checked="me.canBeLeader"
         name="canBeLeader"
         id="canBeLeader"
-        value="true"
+        v-model="me.canBeLeader"
       />
       <label for="true">예</label>
       <input
@@ -39,7 +39,7 @@
         :checked="!me.canBeLeader"
         name="canBeLeader"
         id="canBeLeader"
-        value="false"
+        v-model="me.canBeLeader"
       />
       <label for="true">아니오</label>
 
@@ -53,10 +53,13 @@
         <StackItem
           :data="item"
           v-for="(item, index) in me.selectableStacks"
-          :key="index"
+          :key="item.name"
+          :iniSelected="isIncluded(item)"
+          @onSelectStackItem="addStackItem"
+          @onUnselectStackItem="removeStackItem"
         />
       </div>
-      <button class="myBtn" @click="changeCanBeLeader">변경</button>
+      <button class="myBtn" @click="changeStacks">변경</button>
     </div>
     <hr />
 
@@ -69,14 +72,14 @@
         rows="10"
         v-model="me.introduction"
       ></textarea>
-      <butto class="myBtn" @click="changeIntroduction">변경</butto>
+      <button class="myBtn" @click="changeIntroduction">변경</button>
     </div>
     <hr />
 
     <div>
       <label class="boldAndSpace" for="github">github 주소</label>
       <input id="github" type="text" v-model="me.github" />
-      <butto class="myBtn" n @click="changeGithub">변경</butto>
+      <button class="myBtn" n @click="changeGithub">변경</button>
     </div>
     <hr />
 
@@ -92,6 +95,7 @@
   </div>
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -100,22 +104,111 @@ export default {
         name: '',
         position: '',
         canBeLeader: false,
-        userStacks: [],
+        availableStacks: [],
         selectableStacks: [],
         introduction: '',
         github: '',
         profile: '',
         links: [],
       },
-      editable: {
-        nickname: false,
-      },
     }
   },
-  methods: {},
+  watch: {
+    // me.position이 바뀌면 vue에서 관리하던 기존 스택의 availableStacks 비우기
+    'me.position': function (newVal, oldVal) {
+      if (oldVal != '' && oldVal != newVal) {
+        this.me.availableStacks = []
+      }
+    },
+  },
+  methods: {
+    ...mapMutations({
+      setMyName: 'setMyName',
+    }),
+    addStackItem(stack) {
+      this.me.availableStacks.push(stack)
+    },
+    removeStackItem(stack) {
+      this.me.availableStacks.splice(this.me.availableStacks.indexOf(stack), 1)
+    },
+    isIncluded(item) {
+      return this.me.availableStacks.some((stack) => stack.name == item.name)
+    },
+
+    async changeName() {
+      await this.$axios
+        .$patch('/users/me/name', { name: this.me.name })
+        .then((res) => {
+          this.me.name = res.data.name
+          this.setMyName(this.me.name)
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+    async changePosition() {
+      await this.$axios
+        .$patch('/users/me/position', { position: this.me.position })
+        .then((res) => {
+          this.me.posiiton = res.data.posiiton
+          this.me.selectableStacks = res.data.selectableStacks
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+    async changeCanBeLeader() {
+      await this.$axios
+        .$patch('/users/me/canBeLeader', { canBeLeaer: this.me.canBeLeaer })
+        .then((res) => {
+          this.me.canBeLeaer = res.data.canBeLeaer
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+    async changeStacks() {
+      await this.$axios
+        .$patch('/users/me/stacks', { stacks: this.me.availableStacks })
+        .then((res) => {
+          this.me.availableStacks = res.data.availableStacks
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+    async changeIntroduction() {
+      await this.$axios
+        .$patch('/users/me/introduction', {
+          introduction: this.me.introduction,
+        })
+        .then((res) => {
+          this.me.introduction = res.data.introduction
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+    async changeGithub() {
+      await this.$axios
+        .$patch('/users/me/github', { github: this.me.github })
+        .then((res) => {
+          this.me.github = res.data.github
+        })
+        .catch((err) => {
+          console.error('에러')
+          console.log(err)
+        })
+    },
+  },
   async fetch() {
     await this.$axios
-      .$get('users/me')
+      .$get('/users/me')
       .then((res) => {
         this.me = res.data
       })
@@ -128,4 +221,8 @@ export default {
   },
 }
 </script>
-<style lang="css"></style>
+<style lang="css">
+.bg_blue {
+  background-color: #dbeafe;
+}
+</style>
