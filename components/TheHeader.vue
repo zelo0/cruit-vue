@@ -2,7 +2,7 @@
   <div
     class="bg-red-50 flex justify-between py-2 px-5 border-b-2 border-gray-300 shadow"
   >
-    <div class="basis-1/4 mr-2">로고</div>
+    <nuxt-link to="/" class="basis-1/4 mr-2">로고</nuxt-link>
 
     <div
       class="ring-1 ring-red-500 ring-offset-1 ring-offset-red-100 flex-initial w-1/2"
