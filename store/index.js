@@ -11,10 +11,12 @@ export const mutations = {
 export const actions = {
   async getMyName({ commit }) {
     await this.$axios
-      .$get('/users/me/nickname')
+      .$get('/users/me/name')
       .then((res) => {
-        commit('setMyName', res.data.nickname)
+        commit('setMyName', res.data.name)
       })
-      .catch((err) => {})
+      .catch((err) => {
+        console.log(err)
+      })
   },
 }
