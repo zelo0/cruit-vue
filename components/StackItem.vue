@@ -6,19 +6,19 @@
 </template>
 <script>
 export default {
-  props: ['data'],
+  props: ['data', 'iniSelected'],
   data() {
     return {
-      isSelected: false,
+      isSelected: this.iniSelected,
     }
   },
   methods: {
     onclick() {
       this.isSelected = !this.isSelected
       if (this.isSelected) {
-        this.$emit('onSelectStackItem', this.data.name)
+        this.$emit('onSelectStackItem', this.data)
       } else {
-        this.$emit('onUnselectStackItem', this.data.name)
+        this.$emit('onUnselectStackItem', this.data)
       }
     }
   },

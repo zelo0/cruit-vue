@@ -56,11 +56,11 @@ export default {
       this.setCurrentPage(0)
       this.getProjectsByFilter()
     },
-    onSelectStackItem(stackName) {
-      this.addStackFilter(stackName)
+    onSelectStackItem(stack) {
+      this.addStackFilter(stack.name)
     },
-    onUnselectStackItem(stackName) {
-      this.removeStackFilter(stackName)
+    onUnselectStackItem(stack) {
+      this.removeStackFilter(stack.name)
     },
   },
   async fetch() {
