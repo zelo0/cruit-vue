@@ -53,6 +53,7 @@ export const actions = {
         commit('setHasNext', res.hasNext)
         commit('setTotalPage', res.totalPage)
         commit('setCurrentPage', res.currentPage)
+        commit('setHasError', false)
       })
       .catch((err) => {
         commit('setHasError', true)
