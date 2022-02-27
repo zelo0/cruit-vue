@@ -60,7 +60,7 @@ export default {
 </script>
 <style lang="css">
 .grey {
-  color: grey;
+  color: #d1d5db;
 }
 .black {
   color: black;
