@@ -6,7 +6,7 @@
   input[type='text'],
   select,
   textarea {
-    @apply ring-2 px-1;
+    @apply ring-2 p-1;
   }
 
   textarea {
