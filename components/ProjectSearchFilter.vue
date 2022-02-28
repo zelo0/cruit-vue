@@ -6,6 +6,7 @@
       <h2 class="text-lg font-bold mb-5">프론트엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <StackItem
+          :iniSelected="isIncluded(item)"
           :data="item"
           v-for="(item, index) in frontendStacks"
           :key="index"
@@ -18,6 +19,7 @@
       <h2 class="text-lg font-bold mb-5">백엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <StackItem
+          :iniSelected="isIncluded(item)"
           :data="item"
           v-for="(item, index) in backendStacks"
           :key="index"
@@ -35,13 +37,18 @@
   </div>
 </template>
 <script>
-import { mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   data() {
     return {
       frontendStacks: [],
       backendStacks: [],
     }
+  },
+  computed: {
+    ...mapState({
+      stackFilters: (state) => state.projects.stackFilters,
+    }),
   },
   methods: {
     ...mapActions({
@@ -61,6 +68,9 @@ export default {
     },
     onUnselectStackItem(stack) {
       this.removeStackFilter(stack.name)
+    },
+    isIncluded(item) {
+      return this.stackFilters.includes(item.name)
     },
   },
   async fetch() {
