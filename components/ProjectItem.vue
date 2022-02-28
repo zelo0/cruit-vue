@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="ring-2 rounded-xl p-4">
+  <div class="ring-2 rounded-xl p-4 cursor-pointer" @click="onclick">
     <h2 class="text-lg font-black">{{ project.name }}</h2>
 
     <!-- 프론트엔드 파트 -->
@@ -34,6 +34,11 @@
 <script>
 export default {
   props: ['project'],
+  methods: {
+    onclick() {
+      this.$router.push(`/projects/${this.project.id}`)
+    }
+  }
 }
 </script>
 <style lang=""></style>
