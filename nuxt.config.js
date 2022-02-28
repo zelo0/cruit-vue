@@ -22,6 +22,7 @@ export default {
     { src: '~plugins/vuelidate.js', mode: 'client' },
     { src: '~plugins/vuex-persist', mode: 'client' },
     { src: '~plugins/toast-editor', mode: 'client' },
+    { src: '~plugins/axios' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

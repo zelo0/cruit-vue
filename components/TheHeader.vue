@@ -39,6 +39,7 @@ export default {
         .post('/logout')
         .then((data) => {
           this.setMyName('')
+          this.$router.push('/')
         })
         .catch((err) => {})
     },
