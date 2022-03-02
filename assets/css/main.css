@@ -4,13 +4,27 @@
 
 @layer base {
   input[type='text'],
+  input[type='email'],
+  input[type='password'],
   select,
   textarea {
-    @apply ring-2 p-1;
+    @apply ring-2 p-3;
   }
 
   textarea {
     @apply w-full my-3 p-5;
+  }
+
+  h1 {
+    @apply text-2xl font-black;
+  }
+
+  h2 {
+    @apply text-lg font-bold;
+  }
+
+  h3 {
+    @apply text-base font-semibold text-gray-400;
   }
 }
 
@@ -18,11 +32,25 @@
   .boldAndSpace {
     @apply font-bold mr-4;
   }
+
   .myBtn {
     @apply order-2 rounded-xl p-2 font-semibold hover:bg-blue-200 bg-blue-100 ml-2;
   }
+
   .inputBorder {
     @apply;
+  }
+
+  .container {
+    @apply md:w-4/5 p-4;
+  }
+
+  .ver-gap5-grid {
+    @apply gap-5 grid grid-flow-row;
+  }
+
+  .ver-gap2-grid {
+    @apply gap-2 grid grid-flow-row;
   }
 }
 
