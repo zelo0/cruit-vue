@@ -2,6 +2,12 @@ export const state = () => ({
   myName: '',
 })
 
+export const getters = {
+  authenticated(state) {
+    return !!state.myName
+  },
+}
+
 export const mutations = {
   setMyName(state, name) {
     state.myName = name
