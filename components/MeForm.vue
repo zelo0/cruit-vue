@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="gap-5 grid grid-flow-row">
+  <div class="ver-gap5-grid">
     <div>
       <span class="boldAndSpace">이메일</span>
       <span>{{ me.email }}</span>
@@ -50,7 +50,7 @@
     <div>
       <div class="boldAndSpace">사용 가능 스택</div>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 my-3">
-        <StackItem
+        <SelectableStackItem
           :data="item"
           v-for="(item, index) in me.selectableStacks"
           :key="item.name"
