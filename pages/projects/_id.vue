@@ -10,7 +10,7 @@
         <PartInfo
           :stacks="frontendStacks"
           :members="frontendMembers"
-          :status="frontendPart.part.status"
+          :status="frontendPart.status"
         >
           프론트엔드
         </PartInfo>
@@ -19,7 +19,7 @@
         <PartInfo
           :stacks="backendStacks"
           :members="backendMembers"
-          :status="backendPart.part.status"
+          :status="backendPart.status"
         >
           백엔드
         </PartInfo>
@@ -28,7 +28,7 @@
         <PartInfo
           :stacks="designStacks"
           :members="designMembers"
-          :status="designPart.part.status"
+          :status="designPart.status"
         >
           디자인
         </PartInfo>
@@ -59,17 +59,17 @@ export default {
     // 큰 객체
     frontendPart: function () {
       for (const part of this.project.parts) {
-        if (part.part.position == 'frontend') return part
+        if (part.position == 'frontend') return part
       }
     },
     backendPart: function () {
       for (const part of this.project.parts) {
-        if (part.part.position == 'backend') return part
+        if (part.position == 'backend') return part
       }
     },
     designPart: function () {
       for (const part of this.project.parts) {
-        if (part.part.position == 'design') return part
+        if (part.position == 'design') return part
       }
     },
     /* stack */
