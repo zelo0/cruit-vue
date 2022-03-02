@@ -5,7 +5,7 @@
     <div class="py-5">
       <h2 class="text-lg font-bold mb-5">프론트엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
-        <StackItem
+        <SelectableStackItem
           :iniSelected="isIncluded(item)"
           :data="item"
           v-for="(item, index) in frontendStacks"
@@ -18,7 +18,7 @@
     <div class="py-5">
       <h2 class="text-lg font-bold mb-5">백엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
-        <StackItem
+        <SelectableStackItem
           :iniSelected="isIncluded(item)"
           :data="item"
           v-for="(item, index) in backendStacks"
