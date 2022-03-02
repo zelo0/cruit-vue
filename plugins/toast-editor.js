@@ -6,4 +6,4 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
 import { Editor, Viewer } from '@toast-ui/vue-editor'
 Vue.component('ToastEditor', Editor)
-Vue.component('Toastviewer', Viewer)
+Vue.component('ToastViewer', Viewer)
