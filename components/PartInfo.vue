@@ -27,12 +27,18 @@
     <div>
       <h3>프로젝트 멤버</h3>
       <div v-if="members.length">
-        <PillBtn
-          :name="item.name"
-          :img="item.profile"
-          v-for="(item, index) in members"
+        <div
+          class="relative inline-flex"
+          v-for="(member, index) in members"
           :key="index"
-        />
+        >
+          <span
+            v-if="member.isLeader"
+            class="absolute -top-1 -left-2 bg-opacity-50 bg-red-400 text-white font-semibold text-xs p-1 rounded-full"
+            >LEADER
+          </span>
+          <PillBtn :name="member.name" :img="member.profile" />
+        </div>
       </div>
       <p class="font-semibold text-gray-300" v-else>미정</p>
     </div>
@@ -42,6 +48,13 @@
 <script>
 export default {
   props: ['status', 'stacks', 'members'],
+  created() {
+    /* leader를 part에서 맨 앞으로 옮기기 */
+    const leaderIdx = this.members.findIndex((member) => member.isLeader)
+    if (leaderIdx > -1) {
+      this.members.unshift(this.members.splice(leaderIdx, 1))
+    }
+  },
 }
 </script>
 <style lang=""></style>
