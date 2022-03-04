@@ -1,7 +1,7 @@
 <template lang="">
   <div>
-    <div class="font-extrabold text-xl">프로젝트 공고</div>
     <form class="ver-gap5-grid" @submit.prevent="onsubmit">
+      <div class="font-extrabold text-xl">프로젝트 공고</div>
       <div>
         <label class="boldAndSpace" for="title">제목</label>
         <input class="w-full mt-2" type="text" id="title" v-model="name" />
