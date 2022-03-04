@@ -4,7 +4,16 @@
     <div class="container">
       <div v-if="project" class="ver-gap5-grid">
         <!-- 제목 -->
-        <h1 class="pb-4 border-b-4 border-blue-500">{{ project.name }}</h1>
+        <div class="flex justify-between pb-3 border-b-4 border-blue-500">
+          <h1 class="">{{ project.name }}</h1>
+          <button
+            @click="clickedProjectModifyBtn"
+            class="myBtn"
+            v-if="myName == project.proposer.name"
+          >
+            수정
+          </button>
+        </div>
 
         <!-- 각 스택별 정보 -->
         <PartInfo
@@ -36,7 +45,7 @@
 
         <!-- 내용 -->
         <div>
-          <h2>설명</h2>
+          <!-- <h2>설명</h2> -->
           <client-only placeholder="LOADING...">
             <ToastViewer
               v-if="project.description"
@@ -49,13 +58,24 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
       project: null,
     }
   },
+  methods: {
+    clickedProjectModifyBtn() {
+      this.$router.push(`/project-modify/${this.$route.params.id}`)
+    },
+  },
   computed: {
+    ...mapState({
+      myName: (state) => state.myName,
+    }),
+
     // 큰 객체
     frontendPart: function () {
       for (const part of this.project.parts) {
