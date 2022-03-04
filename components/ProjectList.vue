@@ -1,6 +1,6 @@
 <template lang="">
   <div>
-    <div v-if="!hasError" class="grid md:grid-cols-2 gap-5">
+    <div v-if="!hasError" class="grid xl:grid-cols-4 sm:grid-cols-2 gap-10">
       <ProjectItem
         v-for="(item, index) in projects"
         :key="index"
