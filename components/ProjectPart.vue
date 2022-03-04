@@ -17,7 +17,7 @@
     <!-- 사용 스택 이미지들 -->
     <div class="pb-1">
       <div class="flex">
-        <Pill>사용 스택</Pill>
+        <Pill>스택</Pill>
         <OverlappingAvatars
           :imageList="part.stacks.map((stack) => stack.image)"
         ></OverlappingAvatars>
