@@ -2,7 +2,6 @@
   <div class="mt-2 ring-2">
     <ToastEditor
       ref="toasteditor"
-      :initialValue="editorText"
       :options="editorOptions"
       height="500px"
       initialEditType="wysiwyg"
@@ -14,8 +13,8 @@
 export default {
   data() {
     return {
-      editorText: '이 곳에 프로젝트원 모집 글을 작성해주세요',
       editorOptions: {
+        placeholder: '이 곳에 프로젝트원 모집 글을 작성해주세요',
         hideModeSwitch: true,
         // theme: 'dark',
       },
