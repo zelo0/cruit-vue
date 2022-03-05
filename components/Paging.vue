@@ -8,6 +8,7 @@
     >
       <
     </button>
+
     <div class="flex gap-5">
       <button
         @click="pageClicked"
@@ -19,6 +20,7 @@
         {{ item }}
       </button>
     </div>
+
     <button
       @click="nextClicked"
       :disabled="!hasNext"
