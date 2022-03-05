@@ -1,11 +1,12 @@
 <template lang="">
   <div
-    class="relative ring-2 p-2 rounded-md"
+    class="relative ring-2 p-2 rounded-md cursor-pointer"
     :class="{
-      'ring-green-400': user.position == 'BACKEND',
-      'ring-purple-400': user.position == 'FRONTEND',
-      'ring-yellow-400': user.position == 'DESIGN',
+      'ring-green-400 hover:bg-green-50': user.position == 'BACKEND',
+      'ring-purple-400 hover:bg-purple-50': user.position == 'FRONTEND',
+      'ring-yellow-400 hover:bg-yellow-50': user.position == 'DESIGN',
     }"
+    @click="onclick"
   >
     <div class="flex">
       <Avatar :url="user.profile" />
@@ -25,6 +26,8 @@
     <!-- 오버레이 (대표 url) -->
     <div
       class="absolute right-0 top-0 bg-gray-700 rounded-tr-md text-white p-1"
+      @click.stop
+      v-if="user.github"
     >
       <a :href="user.github" target="_blank">LINK</a>
     </div>
@@ -32,6 +35,7 @@
     <!-- 리더 가능 여부 -->
     <div
       class="absolute left-0 top-0 opacity-30 rounded-tl-md bg-red-400 text-white p-1"
+      v-if="user.canBeLeader"
     >
       <p>LEADER</p>
     </div>
@@ -40,6 +44,11 @@
 <script>
 export default {
   props: ['user'],
+  methods: {
+    onclick() {
+      this.$router.push(`/users/${this.user.id}`)
+    },
+  },
 }
 </script>
 <style lang=""></style>
