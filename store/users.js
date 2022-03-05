@@ -1,5 +1,6 @@
 export const state = () => ({
   stackFilters: [],
+  leaderFilter: 'all',
   users: [],
   hasError: false,
   hasPrevious: false,
@@ -39,13 +40,18 @@ export const mutations = {
   decreaseCurrentPage(state) {
     state.currentPage -= 1
   },
+  setLeaderFilter(state, val) {
+    state.leaderFilter = val
+  },
 }
 
 export const actions = {
   async getUsersByFilter({ commit, state }) {
     await this.$axios
       .$get(
-        `/users?q=${state.stackFilters.join(';')}&page=${state.currentPage}`
+        `/users?q=${state.stackFilters.join(';')}&page=${
+          state.currentPage
+        }&leader=${state.leaderFilter}`
       )
       .then((res) => {
         commit('setUsers', res.data)
