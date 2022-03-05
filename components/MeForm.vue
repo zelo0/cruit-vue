@@ -29,19 +29,19 @@
       <input
         type="radio"
         :checked="me.canBeLeader"
-        name="canBeLeader"
-        id="canBeLeader"
+        value="true"
+        id="true"
         v-model="me.canBeLeader"
       />
       <label for="true">예</label>
       <input
         type="radio"
         :checked="!me.canBeLeader"
-        name="canBeLeader"
-        id="canBeLeader"
+        value="false"
+        id="false"
         v-model="me.canBeLeader"
       />
-      <label for="true">아니오</label>
+      <label for="false">아니오</label>
 
       <button class="myBtn" @click="changeCanBeLeader">변경</button>
     </div>
@@ -161,9 +161,9 @@ export default {
     },
     async changeCanBeLeader() {
       await this.$axios
-        .$patch('/users/me/canBeLeader', { canBeLeaer: this.me.canBeLeaer })
+        .$patch('/users/me/canBeLeader', { canBeLeader: this.me.canBeLeader })
         .then((res) => {
-          this.me.canBeLeaer = res.data.canBeLeaer
+          this.me.canBeLeader = res.data.canBeLeader
         })
         .catch((err) => {
           console.error('에러')
