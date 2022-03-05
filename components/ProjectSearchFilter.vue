@@ -1,9 +1,11 @@
 <template lang="">
-  <div class="my-5">
-    <h2 class="font-bold">원하는 스택의 프로젝트를 찾아보세요</h2>
-    <hr />
-    <div class="py-5">
-      <h2 class="text-lg font-bold mb-5">프론트엔드</h2>
+  <div class="my-5 ver-gap5-grid">
+    <h2 class="border-b-2 border-gray-100 pb-1">
+      원하는 스택의 프로젝트를 찾아보세요
+    </h2>
+
+    <div>
+      <h2 class="pb-2">프론트엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <SelectableStackItem
           :iniSelected="isIncluded(item)"
@@ -15,8 +17,9 @@
         />
       </div>
     </div>
-    <div class="py-5">
-      <h2 class="text-lg font-bold mb-5">백엔드</h2>
+
+    <div>
+      <h2 class="pb-2">백엔드</h2>
       <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
         <SelectableStackItem
           :iniSelected="isIncluded(item)"
@@ -33,7 +36,7 @@
       <button @click="onSearch" class="myBtn">검색</button>
     </div>
 
-    <hr class="mt-5" />
+    <hr class="mt-5 border-gray-200" />
   </div>
 </template>
 <script>
@@ -60,6 +63,7 @@ export default {
       removeStackFilter: 'projects/removeStackFilter',
     }),
     onSearch() {
+      /* vuex에서 currentPage 를 api 요청 parameter로 넘기기 때문에 0으로 초기화 필요 */
       this.setCurrentPage(0)
       this.getProjectsByFilter()
     },
