@@ -4,54 +4,58 @@
     <div class="container">
       <div v-if="project" class="ver-gap5-grid">
         <!-- 제목 -->
-        <div class="flex justify-between pb-3 border-b-4 border-blue-500">
+        <div
+          class="flex justify-between items-center pb-3 border-b-4 border-blue-500"
+        >
           <h1 class="">{{ project.name }}</h1>
           <button
             @click="clickedProjectModifyBtn"
             class="myBtn"
-            v-if="myName == project.proposer.name"
+            v-show="myName == project.proposer.name"
           >
             수정
           </button>
         </div>
 
         <!-- 각 스택별 정보 -->
-        <PartInfo
-          :stacks="frontendStacks"
-          :members="frontendMembers"
-          :status="frontendPart.status"
-        >
-          프론트엔드
-        </PartInfo>
-        <hr />
+        <div class="ver-gap2-grid">
+          <PartInfo
+            :stacks="frontendStacks"
+            :members="frontendMembers"
+            :status="frontendPart.status"
+          >
+            프론트엔드
+          </PartInfo>
+          <hr />
 
-        <PartInfo
-          :stacks="backendStacks"
-          :members="backendMembers"
-          :status="backendPart.status"
-        >
-          백엔드
-        </PartInfo>
-        <hr />
+          <PartInfo
+            :stacks="backendStacks"
+            :members="backendMembers"
+            :status="backendPart.status"
+          >
+            백엔드
+          </PartInfo>
+          <hr />
 
-        <PartInfo
-          :stacks="designStacks"
-          :members="designMembers"
-          :status="designPart.status"
-        >
-          디자인
-        </PartInfo>
-        <hr />
+          <PartInfo
+            :stacks="designStacks"
+            :members="designMembers"
+            :status="designPart.status"
+          >
+            디자인
+          </PartInfo>
+          <hr />
+        </div>
 
         <!-- 내용 -->
         <div>
           <!-- <h2>설명</h2> -->
-          <client-only placeholder="LOADING...">
-            <ToastViewer
-              v-if="project.description"
-              :initialValue="project.description"
-            />
-          </client-only>
+          <!-- <client-only placeholder="LOADING..."> -->
+          <ToastViewer
+            v-if="project.description"
+            :initialValue="project.description"
+          />
+          <!-- </client-only> -->
         </div>
       </div>
     </div>
@@ -61,6 +65,7 @@
 import { mapState } from 'vuex'
 
 export default {
+  name: 'ProjectDetailPage',
   data() {
     return {
       project: null,
