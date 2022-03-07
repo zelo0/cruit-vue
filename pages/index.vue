@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TheHeader />
     <div class="container md:w-4/5 p-4">
       <MenuBar />
       <ProjectCreateBtn />
@@ -16,11 +15,11 @@ export default {
   name: 'IndexPage',
   methods: {
     ...mapActions({
-      getMyName: 'getMyName',
+      getMyHead: 'getMyHead',
     }),
   },
   async fetch() {
-    await this.getMyName()
+    await this.getMyHead()
   },
 }
 </script>
