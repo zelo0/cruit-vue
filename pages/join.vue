@@ -8,6 +8,6 @@
 
 <script>
 export default {
-  name: 'JoinPage',
+  layout: 'blank',
 }
 </script>

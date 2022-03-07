@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TheHeader />
     <div class="container">
       <MeForm />
     </div>

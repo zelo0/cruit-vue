@@ -1,6 +1,5 @@
 <template lang="">
   <div>
-    <TheHeader />
     <div class="container">
       <UserDetail />
     </div>
