@@ -13,6 +13,10 @@
     <div>
       <div class="flex gap-5 font-bold" v-show="myName">
         <nuxt-link to="/me">{{ myName }}</nuxt-link>
+        <div>
+          <span>알림</span>
+          <span>{{ notificationCount }}</span>
+        </div>
         <span class="cursor-pointer" @click="logout">로그아웃</span>
       </div>
       <div class="flex gap-5" v-show="!myName">
@@ -28,6 +32,8 @@ export default {
   computed: {
     ...mapState({
       myName: (state) => state.myName,
+      notificationCount: (state) => state.notificationCount,
+      notifications: (state) => state.notifications,
     }),
   },
   methods: {
