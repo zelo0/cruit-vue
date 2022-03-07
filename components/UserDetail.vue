@@ -6,7 +6,7 @@
         <img
           :src="user.profile"
           alt="유저 프로필 이미지"
-          class="rounded-full w-40 h-40 object-cover"
+          class="rounded-full w-40 h-40 object-cover shadow-xl"
         />
         <h2 class="mt-3">{{ user.name }}</h2>
       </div>
@@ -99,9 +99,7 @@
 
       <!-- 프로젝트 제안 버튼 -->
       <div>
-        <button
-          class="w-full bg-blue-300 hover:bg-blue-500 animate-bounce duration-100 p-4 rounded-md text-white"
-        >
+        <button class="w-full-btn animate-bounce" @click="onclick">
           <h2>프로젝트 제안 보내기</h2>
         </button>
       </div>
@@ -115,6 +113,11 @@ export default {
     return {
       user: null,
     }
+  },
+  methods: {
+    onclick() {
+      this.$router.push(`/proposal/${this.user.name}`)
+    },
   },
   async fetch() {
     await this.$axios
