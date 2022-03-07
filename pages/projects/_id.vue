@@ -1,6 +1,5 @@
 <template lang="">
   <div>
-    <TheHeader />
     <div class="container">
       <div v-if="project" class="ver-gap5-grid">
         <!-- 제목 -->
@@ -84,17 +83,17 @@ export default {
     // 큰 객체
     frontendPart: function () {
       for (const part of this.project.parts) {
-        if (part.position == 'frontend') return part
+        if (part.position == 'FRONTEND') return part
       }
     },
     backendPart: function () {
       for (const part of this.project.parts) {
-        if (part.position == 'backend') return part
+        if (part.position == 'BACKEND') return part
       }
     },
     designPart: function () {
       for (const part of this.project.parts) {
-        if (part.position == 'design') return part
+        if (part.position == 'DESIGN') return part
       }
     },
     /* stack */

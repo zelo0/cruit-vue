@@ -117,9 +117,9 @@ export default {
       .then((res) => {
         const data = res.data
         for (let i = 0; i < data.length; i++) {
-          if (data[i].dtype == 'frontend') {
+          if (data[i].dtype == 'FRONTEND') {
             this.frontendStacks.push(data[i])
-          } else if (data[i].dtype == 'backend') {
+          } else if (data[i].dtype == 'BACKEND') {
             this.backendStacks.push(data[i])
           }
         }

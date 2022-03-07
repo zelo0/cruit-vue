@@ -97,9 +97,9 @@
         class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       >
         <option value="">개발 포지션을 선택해주세요</option>
-        <option value="frontend">프론트엔드</option>
-        <option value="backend">백엔드</option>
-        <option value="design">디자인</option>
+        <option value="FRONTEND">프론트엔드</option>
+        <option value="BACKEND">백엔드</option>
+        <option value="DESIGN">디자인</option>
       </select>
       <div class="text-red-500 font-semibold" v-show="errorMessage.position">
         {{ errorMessage.position }}
@@ -126,7 +126,7 @@ import {
   email,
 } from 'vuelidate/lib/validators'
 
-const positionOptions = ['frontend', 'backend', 'design']
+const positionOptions = ['FRONTEND', 'BACKEND', 'DESIGN']
 const amongOptions = (val) => positionOptions.includes(val)
 
 export default {
