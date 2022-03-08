@@ -1,7 +1,7 @@
 export const state = () => ({
   myName: '',
-  notificationCount: null,
-  notifications: null,
+  notificationCount: 0,
+  notifications: [],
 })
 
 export const getters = {
