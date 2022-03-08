@@ -48,13 +48,33 @@
 
         <!-- 내용 -->
         <div>
-          <!-- <h2>설명</h2> -->
+          <h2>설명</h2>
           <!-- <client-only placeholder="LOADING..."> -->
           <ToastViewer
             v-if="project.description"
             :initialValue="project.description"
           />
           <!-- </client-only> -->
+        </div>
+        <hr />
+
+        <!-- 댓글(질문) -->
+        <div>
+          <h2>댓글</h2>
+          <!-- 댓글 작성 폼 -->
+          <div>
+            <QuestionForm @createdQuestion="addQuestion" />
+          </div>
+
+          <!-- 댓글들 -->
+          <div>
+            <Question
+              v-for="(question, index) in project.questions"
+              :key="index"
+              :question="question"
+              @deleted="onDeletedQuestion(indexX)"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -73,6 +93,13 @@ export default {
   methods: {
     clickedProjectModifyBtn() {
       this.$router.push(`/project-modify/${this.$route.params.id}`)
+    },
+    addQuestion(question) {
+      this.project.questions.push(question)
+    },
+    onDeletedQuestion(index) {
+      this.project.question.splice(index, 1)
+      alert('삭제됐습니다')
     },
   },
   computed: {
