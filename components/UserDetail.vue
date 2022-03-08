@@ -84,7 +84,7 @@
       <!-- 참여 중인 프로젝트 -->
       <div>
         <h2>참여한 프로젝트</h2>
-        <div>
+        <div v-if="user.projectList.length">
           <ul v-for="(project, index) in user.projectList" :key="index">
             <li>
               <NuxtLink
@@ -93,6 +93,10 @@
               >
             </li>
           </ul>
+        </div>
+
+        <div v-else>
+          <p>아직 참여한 프로젝트가 없어요</p>
         </div>
       </div>
       <hr />
@@ -116,7 +120,7 @@ export default {
   },
   methods: {
     onclick() {
-      this.$router.push(`/proposal/${this.user.name}`)
+      this.$router.push(`/proposals/${this.user.name}`)
     },
   },
   async fetch() {
