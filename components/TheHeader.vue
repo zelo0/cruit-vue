@@ -11,6 +11,7 @@
     </div>
 
     <div>
+      <!-- 로그인 했을 시 -->
       <div class="flex gap-5 font-bold" v-show="myName">
         <nuxt-link to="/me">{{ myName }}</nuxt-link>
         <div>
@@ -19,6 +20,8 @@
         </div>
         <span class="cursor-pointer" @click="logout">로그아웃</span>
       </div>
+
+      <!-- 로그인 전 -->
       <div class="flex gap-5" v-show="!myName">
         <nuxt-link to="/login" class="font-bold">로그인</nuxt-link>
         <nuxt-link to="/join" class="font-bold">회원가입</nuxt-link>
