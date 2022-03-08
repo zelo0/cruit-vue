@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="px-5 py-1 border-2 ver-gap1-grid" @click="onclick">
+  <div class="px-5 py-1 border-b-2 ver-gap1-grid" @click="onclick">
     <div>
       <h3>프로젝트명</h3>
       <p>{{ part.projectName }}</p>
