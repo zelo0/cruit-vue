@@ -72,7 +72,7 @@
               v-for="(question, index) in project.questions"
               :key="index"
               :question="question"
-              @deleted="onDeletedQuestion(indexX)"
+              @deleted="onDeletedQuestion(index)"
             />
           </div>
         </div>
@@ -98,8 +98,7 @@ export default {
       this.project.questions.push(question)
     },
     onDeletedQuestion(index) {
-      this.project.question.splice(index, 1)
-      alert('삭제됐습니다')
+      this.project.questions.splice(index, 1)
     },
   },
   computed: {
