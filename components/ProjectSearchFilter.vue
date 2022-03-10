@@ -1,7 +1,7 @@
 <template lang="">
   <div class="my-5 ver-gap5-grid">
     <h2 class="border-b-2 border-gray-100 pb-1">
-      원하는 스택의 프로젝트를 찾아보세요
+      원하는 프로젝트를 찾아보세요
     </h2>
 
     <div>
@@ -36,7 +36,7 @@
       <button @click="onSearch" class="myBtn">검색</button>
     </div>
 
-    <hr class="mt-5 border-gray-200" />
+    <hr />
   </div>
 </template>
 <script>
