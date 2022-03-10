@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="flex py-1">
+  <div>
     <img
       :src="url"
       class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover"
