@@ -59,6 +59,9 @@ export default {
     show() {
       this.isDialogShown = true
     },
+    hide() {
+      this.isDialogShown = false
+    },
   },
 }
 </script>
