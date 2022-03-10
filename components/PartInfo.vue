@@ -32,12 +32,14 @@
           v-for="(member, index) in members"
           :key="index"
         >
-          <span
-            v-if="member.isLeader"
-            class="absolute -top-1 -left-2 bg-opacity-50 bg-red-400 text-white font-semibold text-xs p-1 rounded-full"
-            >LEADER
-          </span>
-          <PillBtn :name="member.name" :img="member.profile" />
+          <NuxtLink :to="{ path: `/users/${member.id}` }">
+            <span
+              v-if="member.isLeader"
+              class="absolute -top-1 -left-2 bg-opacity-50 bg-red-400 text-white font-semibold text-xs p-1 rounded-full"
+              >LEADER
+            </span>
+            <PillBtn :name="member.name" :img="member.profile" />
+          </NuxtLink>
         </div>
       </div>
       <p class="font-semibold text-gray-300" v-else>미정</p>
