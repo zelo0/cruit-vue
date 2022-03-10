@@ -7,6 +7,10 @@
     word-break: keep-all;
   }
 
+  p {
+    white-space: pre-line;
+  }
+
   input[type='text'],
   input[type='email'],
   input[type='password'],
@@ -16,7 +20,7 @@
   }
 
   textarea {
-    @apply w-full my-3 p-5;
+    @apply w-full my-3;
   }
 
   h1 {
@@ -41,6 +45,10 @@
     @apply order-2 rounded-xl p-2 font-semibold hover:bg-blue-200 bg-blue-100 ml-2;
   }
 
+  .gray-btn {
+    @apply p-1 bg-gray-100 hover:bg-gray-200;
+  }
+
   .w-full-btn {
     @apply w-full bg-blue-300 hover:bg-blue-500 duration-100 p-4 rounded-md text-white;
   }
@@ -63,6 +71,10 @@
 
   .ver-gap1-grid {
     @apply gap-1 grid grid-flow-row;
+  }
+
+  .big-profile {
+    @apply rounded-full w-40 h-40 object-contain shadow-xl;
   }
 }
 
