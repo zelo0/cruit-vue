@@ -25,7 +25,7 @@
 
     <!-- 오버레이 (대표 url) -->
     <div
-      class="absolute right-0 top-0 bg-gray-700 rounded-tr-md text-white p-1"
+      class="absolute right-0 top-0 bg-opacity-30 bg-gray-700 rounded-tr-md text-white p-1"
       @click.stop
       v-if="user.github"
     >
@@ -34,7 +34,7 @@
 
     <!-- 리더 가능 여부 -->
     <div
-      class="absolute left-0 top-0 opacity-30 rounded-tl-md bg-red-400 text-white p-1"
+      class="absolute left-0 top-0 bg-opacity-30 rounded-tl-md bg-red-400 text-white p-1"
       v-if="user.canBeLeader"
     >
       <p>LEADER</p>
