@@ -13,7 +13,7 @@ export default {
   props: ['parentId'],
   methods: {
     async onSubmit() {
-      if (this.parentId) {
+      if (!this.parentId) {
         /* 프로젝트의 질문 */
         await this.$axios
           .$post('/questions', {
@@ -37,7 +37,7 @@ export default {
           })
           .then((res) => {
             this.$refs.textarea.clearContent()
-            this.$emit('createdQuestion', res.data)
+            this.$emit('createdSubQuestion', res.data)
           })
           .catch((err) => {
             console.log(err)
