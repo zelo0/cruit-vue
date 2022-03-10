@@ -5,7 +5,7 @@
     >
       로그인
     </p>
-    <p
+    <div
       class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500 mb-10"
     >
       계정이 없으신가요?
@@ -15,7 +15,7 @@
       >
         회원가입</NuxtLink
       >
-    </p>
+    </div>
     <!-- <button
       aria-label="Continue with google"
       role="button"
