@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10">
+  <div class="bg-white drop-shadow-xl rounded lg:w-1/3 md:w-1/2 w-full p-10">
     <p
       class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
     >
@@ -122,7 +122,7 @@
           v-model="form.email"
           aria-labelledby="email"
           type="email"
-          class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+          class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
         />
       </div>
       <div class="mt-6 w-full">
@@ -138,7 +138,7 @@
             v-model="form.password"
             id="password"
             type="password"
-            class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+            class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
           />
           <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
             <svg

@@ -1,7 +1,7 @@
 <template lang="">
   <form
     @submit.prevent="submit"
-    class="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10"
+    class="bg-white rounded lg:w-1/3 md:w-1/2 w-full p-10 drop-shadow-xl"
   >
     <p
       class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 mb-5"
@@ -27,7 +27,7 @@
         v-model="form.email"
         aria-labelledby="email"
         type="email"
-        class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       />
       <div class="text-red-500 font-semibold" v-show="errorMessage.email">
         {{ errorMessage.email }}
@@ -43,7 +43,7 @@
         v-model="form.name"
         aria-labelledby="name"
         type="text"
-        class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       />
       <div class="text-red-500 font-semibold" v-show="errorMessage.name">
         {{ errorMessage.name }}
@@ -60,7 +60,7 @@
           v-model="form.password"
           id="pass"
           type="password"
-          class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+          class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
         />
         <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
           <svg
@@ -94,7 +94,7 @@
         v-model="form.position"
         name="position"
         id="position"
-        class="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       >
         <option value="">개발 포지션을 선택해주세요</option>
         <option value="FRONTEND">프론트엔드</option>
