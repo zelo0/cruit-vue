@@ -7,11 +7,10 @@
     <!-- 팝업 창 -->
     <div class="bg-white py-10 px-7 rounded-lg relative" @click.stop>
       <div class="text-right">
-        <button
-          class="font-bold text-xl absolute right-4 top-1.5"
-          @click="onCancelProposal"
-        >
-          X
+        <button class="absolute right-4 top-1.5" @click="onCancelProposal">
+          <client-only>
+            <unicon name="times" />
+          </client-only>
         </button>
       </div>
 
