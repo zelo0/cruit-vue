@@ -1,6 +1,21 @@
 <template lang="">
   <div class="ver-gap5-grid">
     <div>
+      <form method="post" @submit.prevent="changeProfile">
+        <label class="boldAndSpace" for="profile">프로필 이미지</label>
+        <img
+          v-show="me.profile"
+          :src="me.profile"
+          alt="내 프로필 이미지"
+          class="big-profile my-3"
+        />
+        <input id="profile" type="file" accept="image/*" ref="selectedFile" />
+        <button class="myBtn">변경</button>
+      </form>
+    </div>
+    <hr />
+
+    <div>
       <span class="boldAndSpace">이메일</span>
       <span>{{ me.email }}</span>
     </div>
@@ -84,10 +99,20 @@
     <hr />
 
     <!-- <div>링크</div> -->
-    <div class="boldAndSpace">나에 대한 평가</div>
+
+    <!-- <div class="boldAndSpace">나에 대한 평가</div>
+    <hr /> -->
+
+    <div class="boldAndSpace flex justify-between">
+      <span>참여한 프로젝트</span>
+      <span>>></span>
+    </div>
     <hr />
 
-    <div class="boldAndSpace">참여했던 파트</div>
+    <div class="boldAndSpace">내가 보낸 제안</div>
+    <hr />
+
+    <div class="boldAndSpace">내가 받은 제안</div>
     <hr />
 
     <div class="boldAndSpace">내가 쓴 질문</div>
@@ -102,6 +127,7 @@ export default {
       me: {
         email: '',
         name: '',
+        profile: '',
         position: '',
         canBeLeader: false,
         availableStacks: [],
@@ -134,7 +160,22 @@ export default {
     isIncluded(item) {
       return this.me.availableStacks.some((stack) => stack.name == item.name)
     },
-
+    async changeProfile() {
+      const form = new FormData()
+      form.append('file', this.$refs.selectedFile.files[0])
+      await this.$axios
+        .$patch('/users/me/profile', form, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((res) => {
+          this.me.profile = res.data.profile
+        })
+        .catch((err) => {
+          consoel.log('파일 업로드 실패')
+        })
+    },
     async changeName() {
       await this.$axios
         .$patch('/users/me/name', { name: this.me.name })
