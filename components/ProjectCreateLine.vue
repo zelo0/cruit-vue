@@ -1,5 +1,6 @@
 <template lang="">
-  <div class="my-2 text-right">
+  <div class="my-2 flex items-center justify-between">
+    <h2>어떤 프로젝트든 좋아요</h2>
     <button @click="onclick" class="myBtn inline-block">프로젝트 생성</button>
   </div>
 </template>
