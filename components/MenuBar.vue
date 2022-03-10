@@ -7,4 +7,8 @@
 <script>
 export default {}
 </script>
-<style lang=""></style>
+<style lang="css" scoped>
+a.nuxt-link-exact-active {
+  @apply text-blue-700;
+}
+</style>
