@@ -6,14 +6,27 @@
         <div
           class="flex justify-between items-center pb-3 border-b-4 border-blue-500"
         >
+          <!-- 프로젝트 제목 -->
           <h1 class="">{{ project.name }}</h1>
-          <button
-            @click="clickedProjectModifyBtn"
-            class="myBtn"
-            v-show="myName == project.proposer.name"
-          >
-            수정
-          </button>
+
+          <div>
+            <!-- 프로적테 수정 버튼 -->
+            <button
+              @click="clickedProjectModifyBtn"
+              class="myBtn"
+              v-show="myName == project.proposer.name"
+            >
+              수정
+            </button>
+            <!-- 프로젝트 삭제 버튼 -->
+            <button
+              @click="clickedProjectDeleteBtn"
+              class="red-btn"
+              v-show="myName == project.proposer.name"
+            >
+              삭제
+            </button>
+          </div>
         </div>
 
         <!-- 각 스택별 정보 -->
@@ -78,6 +91,12 @@
         </div>
       </div>
     </div>
+
+    <Dialog ref="dialog" @answeredYes="deleteProject" @answeredNo="hideDialog">
+      <template #message>
+        <h2>해당 프로젝트를 삭제하시겠습니까?</h2>
+      </template>
+    </Dialog>
   </div>
 </template>
 <script>
@@ -93,6 +112,25 @@ export default {
   methods: {
     clickedProjectModifyBtn() {
       this.$router.push(`/project-modify/${this.$route.params.id}`)
+    },
+    hideDialog() {
+      this.$refs.dialog.hide()
+    },
+    clickedProjectDeleteBtn() {
+      this.$refs.dialog.show()
+    },
+    async deleteProject() {
+      /* 삭제 후 back */
+      await this.$axios
+        .$delete(`/projects/${this.$route.params.id}`)
+        .then((res) => {
+          this.hideDialog()
+          alert('삭제됐습니다')
+          this.$router.back()
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     addQuestion(question) {
       this.project.questions.push(question)
