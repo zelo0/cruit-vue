@@ -23,14 +23,14 @@
 
     <div>
       <label class="boldAndSpace" for="name">닉네임</label>
-      <input id="name" type="text" v-model="me.name" />
+      <input id="name" type="text" v-model="me.name" class="w-1/2" />
       <button class="myBtn" @click="changeName">변경</button>
     </div>
     <hr />
 
     <div>
       <label class="boldAndSpace" for="position">포지션</label>
-      <select id="position" v-model="me.position">
+      <select id="position" v-model="me.position" class="w-1/2">
         <option value="FRONTEND">프론트엔드</option>
         <option value="BACKEND">백엔드</option>
         <option value="DESIGN">디자인</option>
@@ -93,7 +93,7 @@
 
     <div>
       <label class="boldAndSpace" for="github">github 주소</label>
-      <input id="github" type="text" v-model="me.github" />
+      <input id="github" type="text" v-model="me.github" class="w-1/2" />
       <button class="myBtn" n @click="changeGithub">변경</button>
     </div>
     <hr />
@@ -105,17 +105,34 @@
 
     <div class="boldAndSpace flex justify-between">
       <span>참여한 프로젝트</span>
-      <span>>></span>
+      <client-only>
+        <unicon name="angle-right-b" />
+      </client-only>
     </div>
     <hr />
 
-    <div class="boldAndSpace">내가 보낸 제안</div>
+    <div class="boldAndSpace flex justify-between">
+      <span>내가 보낸 제안</span>
+      <client-only>
+        <unicon name="angle-right-b" />
+      </client-only>
+    </div>
     <hr />
 
-    <div class="boldAndSpace">내가 받은 제안</div>
+    <div class="boldAndSpace flex justify-between">
+      <span>내가 받은 제안</span>
+      <client-only>
+        <unicon name="angle-right-b" />
+      </client-only>
+    </div>
     <hr />
 
-    <div class="boldAndSpace">내가 쓴 질문</div>
+    <div class="boldAndSpace flex justify-between">
+      <span>내가 쓴 질문</span>
+      <client-only>
+        <unicon name="angle-right-b" />
+      </client-only>
+    </div>
     <hr />
   </div>
 </template>
