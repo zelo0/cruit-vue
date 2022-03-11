@@ -5,9 +5,7 @@
         <slot></slot>
       </h2>
       <BreadCrumb />
-      <div v-if="status == 'RECRUITING'" class="text-blue-500 ring-blue-200">
-        모집 중
-      </div>
+      <div v-if="status == 'RECRUITING'" class="text-blue-500">모집 중</div>
       <div v-else class="text-gray-400">모집 완료</div>
     </div>
 
