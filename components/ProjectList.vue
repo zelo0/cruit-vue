@@ -1,11 +1,13 @@
 <template lang="">
   <div>
-    <div v-if="!hasError" class="grid xl:grid-cols-4 sm:grid-cols-2 gap-10">
-      <ProjectItem
-        v-for="(item, index) in projects"
-        :key="index"
-        :project="item"
-      />
+    <div v-if="!hasError">
+      <div class="grid xl:grid-cols-4 sm:grid-cols-2 gap-10">
+        <ProjectItem
+          v-for="(item, index) in projects"
+          :key="item.id"
+          :project="item"
+        />
+      </div>
     </div>
     <div v-else class="text-red-400 font-bold text-2xl text-center">
       에러가 발생했습니다
