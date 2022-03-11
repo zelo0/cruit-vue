@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Unicon from 'vue-unicons/dist/vue-unicons-vue2.umd'
-import { uniBell } from 'vue-unicons/dist/icons'
+import { uniBell, uniAngleRightB, uniTimes } from 'vue-unicons/dist/icons'
 
-Unicon.add([uniBell])
+Unicon.add([uniBell, uniAngleRightB, uniTimes])
 Vue.use(Unicon)
