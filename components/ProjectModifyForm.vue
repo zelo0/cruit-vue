@@ -23,7 +23,6 @@
           />
         </client-only>
       </div>
-      <hr />
 
       <div class="my-2 text-right">
         <button class="myBtn inline-block">변경</button>
