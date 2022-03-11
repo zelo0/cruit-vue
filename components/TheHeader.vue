@@ -18,7 +18,7 @@
 
         <!-- 알림 -->
         <div
-          class="relative"
+          class="relative cursor-pointer"
           @click="isShowingNotification = !isShowingNotification"
         >
           <!-- 알림 아이콘 -->
@@ -31,10 +31,10 @@
           </div>
 
           <!-- 알림판 -->
-          <TransitionShow>
+          <TransitionSlideUpDown>
             <div
               v-show="isShowingNotification"
-              class="absolute top-7 right-2 border-2 border-black bg-white p-2 rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
+              class="absolute z-40 top-7 right-2 border-2 border-black bg-white p-2 rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
             >
               <div
                 v-for="(notification, index) in notifications"
@@ -50,13 +50,13 @@
                         : '/proposals/me',
                   }"
                 >
-                  <p>
+                  <span>
                     {{ notification.message }}
-                  </p>
+                  </span>
                 </NuxtLink>
               </div>
             </div>
-          </TransitionShow>
+          </TransitionSlideUpDown>
         </div>
 
         <!-- 로그아웃 버튼 -->

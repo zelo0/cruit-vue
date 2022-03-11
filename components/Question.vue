@@ -16,7 +16,7 @@
       <!-- 변경 아닐 때는 단순히 내용 보여주기 -->
       <p v-show="!isModifing">{{ question.content }}</p>
       <!-- 변경 원할 때 -->
-      <!-- <TransitionShow> -->
+      <TransitionSlideUpDown>
         <form v-show="isModifing" @submit.prevent="onModify">
           <AutoResizingTextArea
             :initialContent="question.content"
@@ -26,7 +26,7 @@
             <button class="myBtn inline-block">변경</button>
           </div>
         </form>
-      <!-- </TransitionShow> -->
+      </TransitionSlideUpDown>
     </div>
 
     <!-- 댓글 관련 버튼들 -->
@@ -58,13 +58,13 @@
     <!-- 대댓글 -->
     <div class="ml-5">
       <!-- 대댓글 작성 폼 -->
-      <!-- <TransitionShow> -->
+      <TransitionSlideUpDown>
         <QuestionForm
           :parentId="question.id"
           v-show="isShownReQuestionForm"
           @createdSubQuestion="addSubQuestionToChildrenAndHideForm"
         />
-      <!-- </TransitionShow> -->
+      </TransitionSlideUpDown>
 
       <!-- 대댓글들 -->
       <div>
