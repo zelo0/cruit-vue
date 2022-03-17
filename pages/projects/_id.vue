@@ -1,6 +1,6 @@
 <template lang="">
   <div>
-    <div class="container">
+    <div>
       <div v-if="project" class="ver-gap5-grid">
         <!-- 제목 -->
         <div
@@ -9,12 +9,14 @@
           <!-- 프로젝트 제목 -->
           <h1 class="">{{ project.name }}</h1>
 
-          <div>
-            <!-- 프로적테 수정 버튼 -->
+          <!-- 프로젝트 제안자에게 보이는 버튼들 -->
+          <div
+            v-if="myName == project.proposer.name"
+          >
+            <!-- 프로젝트 수정 버튼 -->
             <button
               @click="clickedProjectModifyBtn"
               class="myBtn"
-              v-show="myName == project.proposer.name"
             >
               수정
             </button>
@@ -22,9 +24,17 @@
             <button
               @click="clickedProjectDeleteBtn"
               class="red-btn"
-              v-show="myName == project.proposer.name"
             >
               삭제
+            </button>
+          </div>
+
+          <!-- 프로젝트 제안자가 아닌 이들에게 보이는 버튼들 -->
+          <div
+          v-else
+          >
+            <button class="myBtn" @click="onClickJoinBtn">
+              참여 요청
             </button>
           </div>
         </div>
@@ -32,27 +42,24 @@
         <!-- 각 스택별 정보 -->
         <div class="ver-gap2-grid">
           <PartInfo
-            :stacks="frontendStacks"
-            :members="frontendMembers"
-            :status="frontendPart.status"
+            :part="frontendPart"
+            :proposerName="project.proposer.name"
           >
             프론트엔드
           </PartInfo>
           <hr />
 
           <PartInfo
-            :stacks="backendStacks"
-            :members="backendMembers"
-            :status="backendPart.status"
+            :part="backendPart"
+            :proposerName="project.proposer.name"
           >
             백엔드
           </PartInfo>
           <hr />
 
           <PartInfo
-            :stacks="designStacks"
-            :members="designMembers"
-            :status="designPart.status"
+            :part="designPart"
+            :proposerName="project.proposer.name"
           >
             디자인
           </PartInfo>
@@ -92,9 +99,15 @@
       </div>
     </div>
 
-    <Dialog ref="dialog" @answeredYes="deleteProject" @answeredNo="hideDialog">
+    <Dialog ref="deleteDialog" @answeredYes="deleteProject" @answeredNo="hideDeleteDialog">
       <template #message>
         <h2>해당 프로젝트를 삭제하시겠습니까?</h2>
+      </template>
+    </Dialog>
+
+    <Dialog ref="joinDialog" @answeredYes="joinLeaderRequest" @answeredNo="joinNonLeaderRequest">
+      <template #message>
+        <h2>해당 파트의 리더가 없는 상태입니다<br>리더 자리에 지원하시겠습니까?</h2>
       </template>
     </Dialog>
   </div>
@@ -111,20 +124,20 @@ export default {
   },
   methods: {
     clickedProjectModifyBtn() {
-      this.$router.push(`/project-modify/${this.$route.params.id}`)
+      this.$router.push(`/projects/modify/${this.$route.params.id}`)
     },
-    hideDialog() {
-      this.$refs.dialog.hide()
+    hideDeleteDialog() {
+      this.$refs.deleteDialog.hide()
     },
     clickedProjectDeleteBtn() {
-      this.$refs.dialog.show()
+      this.$refs.deleteDialog.show()
     },
     async deleteProject() {
       /* 삭제 후 back */
       await this.$axios
         .$delete(`/projects/${this.$route.params.id}`)
         .then((res) => {
-          this.hideDialog()
+          this.hideDeleteDialog()
           alert('삭제됐습니다')
           this.$router.back()
         })
@@ -138,10 +151,38 @@ export default {
     onDeletedQuestion(index) {
       this.project.questions.splice(index, 1)
     },
+    async joinLeaderRequest() {
+      await this.$axios.$post(`/proposals/project`, {
+        projectId: this.$route.params.id,
+        isLeaderProposal: true
+      }).then(res=>{
+        this.$refs.joinDialog.hide()
+        alert("프로젝트 참여 요청을 보냈습니다")
+      }).catch(err=>{console.log(err)})
+    },
+    async joinNonLeaderRequest() {
+      await this.$axios.$post(`/proposals/project`, {
+        projectId: this.$route.params.id,
+        isLeaderProposal: false
+      }).then(res=>{
+        this.$refs.joinDialog.hide()
+        alert("프로젝트 참여 요청을 보냈습니다")
+      }).catch(err=>{console.log(err)})
+    },
+    async onClickJoinBtn() {
+      // 내 포지션의 파트에 리더가 없으면 
+      // 리더 자리 들어갈 지 결정하는 다이얼로그 띄움
+      if (!this.hasLeaderOfMyPosition) {
+        this.$refs.joinDialog.show()
+      } else {
+        await this.joinNonLeaderRequest()
+      }
+    },
   },
   computed: {
     ...mapState({
       myName: (state) => state.myName,
+      myPosition: (state) => state.myPosition
     }),
 
     // 큰 객체
@@ -160,26 +201,17 @@ export default {
         if (part.position == 'DESIGN') return part
       }
     },
-    /* stack */
-    frontendStacks: function () {
-      return this.frontendPart.stacks
-    },
-    backendStacks: function () {
-      return this.backendPart.stacks
-    },
-    designStacks: function () {
-      return this.designPart.stacks
-    },
-    /* partMember */
-    frontendMembers: function () {
-      return this.frontendPart.partMembers
-    },
-    backendMembers: function () {
-      return this.backendPart.partMembers
-    },
-    designMembers: function () {
-      return this.designPart.partMembers
-    },
+
+    // 내 포지션의 파트의 리더 자리가 비었는지
+    hasLeaderOfMyPosition: function() {
+      if (this.myPosition == "FRONTEND") {
+        return this.frontendPart.hasPartLeader
+      } else if (this.myPosition == "BACKEND") {
+        return this.backendPart.hasPartLeader
+      } else {
+        return this.designPart.hasPartLeader
+      }
+    }
   },
   async fetch() {
     await this.$axios
