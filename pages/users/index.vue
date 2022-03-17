@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div class="container md:w-4/5 p-4">
-      <MenuBar />
-      <UserSearchFilter />
-      <span ref="anchor"></span>
-      <UserList />
-    </div>
+  <div class="">
+    <MenuBar />
+    <UserSearchFilter />
+    <span ref="anchor"></span>
+    <UserList />
   </div>
 </template>
 

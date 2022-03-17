@@ -1,8 +1,6 @@
 <template lang="">
   <div>
-    <div class="container">
-      <UserDetail />
-    </div>
+    <UserDetail />
   </div>
 </template>
 <script>
