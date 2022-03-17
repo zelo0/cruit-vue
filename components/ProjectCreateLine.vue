@@ -8,7 +8,7 @@
 export default {
   methods: {
     onclick() {
-      this.$router.push('/project-create')
+      this.$router.push('/projects/create')
     },
   },
 }
