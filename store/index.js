@@ -1,5 +1,6 @@
 export const state = () => ({
   myName: '',
+  myPosition: '',
   notificationCount: 0,
   notifications: [],
 })
@@ -13,6 +14,9 @@ export const getters = {
 export const mutations = {
   setMyName(state, name) {
     state.myName = name
+  },
+  setMyPosition(state, position) {
+    state.myPosition = position
   },
   setNotificationCount(state, count) {
     state.notificationCount = count
@@ -29,6 +33,7 @@ export const actions = {
       .then((res) => {
         // 로그인 안 돼 있으면 빈 문자열을 받음
         commit('setMyName', res.data.name)
+        commit('setMyPosition', res.data.position)
         commit('setNotificationCount', res.data.notificationCount)
         commit('setNotifications', res.data.notifications)
       })
