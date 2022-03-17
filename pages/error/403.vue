@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <div class="container md:w-4/5 p-4">
-      <MenuBar />
-      <ProjectCreateBtn />
-      <ProjectSearchFilter />
-      <ProjectList />
-    </div>
+  <div class="flex h-full items-center justify-center">
+    <h1>접근 권한이 없는 페이지입니다</h1>
   </div>
 </template>
 
