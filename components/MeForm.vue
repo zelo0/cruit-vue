@@ -64,7 +64,7 @@
 
     <div>
       <div class="boldAndSpace">사용 가능 스택</div>
-      <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 my-3">
+      <div class="stack-grid">
         <SelectableStackItem
           :data="item"
           v-for="(item, index) in me.selectableStacks"
@@ -272,7 +272,7 @@ export default {
       })
       .catch((err) => {
         if (err.response.status == 401) {
-          this.$router.push('/login')
+          this.$router.push('/auth/login')
           alert('로그인이 필요합니다')
         }
       })
