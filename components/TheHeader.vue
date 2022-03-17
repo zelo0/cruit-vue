@@ -14,11 +14,11 @@
       <!-- 로그인 했을 시 -->
       <div class="flex gap-5 font-bold" v-show="myName">
         <!-- 내 정보로 가는 링크 -->
-        <nuxt-link to="/me">{{ myName }}</nuxt-link>
+        <nuxt-link to="/users/me">{{ myName }}</nuxt-link>
 
         <!-- 알림 -->
         <div
-          class="relative cursor-pointer"
+          class="relative"
           @click="isShowingNotification = !isShowingNotification"
         >
           <!-- 알림 아이콘 -->
@@ -34,25 +34,38 @@
           <TransitionSlideUpDown>
             <div
               v-show="isShowingNotification"
-              class="absolute z-40 top-7 right-2 border-2 border-black bg-white p-2 rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
+              class="absolute z-40 top-7 right-2 border-2 border-black bg-white rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
             >
-              <div
-                v-for="(notification, index) in notifications"
-                :key="index"
-                class="py-2 border-b-2"
-                @click="setToRead(notification.id)"
-              >
-                <NuxtLink
-                  :to="{
-                    path:
-                      notification.type == 'question'
-                        ? `/projects/${notification.relatedId}`
-                        : '/proposals/me',
-                  }"
+              <!-- 알림 영역 -->
+              <div>
+                <div
+                  v-for="(notification, index) in notifications"
+                  :key="index"
+                  class="border-b-2 p-2 cursor-pointer"
+                  @click="setToRead(notification)"
                 >
-                  <span>
-                    {{ notification.message }}
-                  </span>
+                  <NuxtLink
+                    :to="{
+                      path:
+                        notification.type == 'question'
+                          ? `/projects/${notification.relatedId}`
+                          : '/proposals/me',
+                    }"
+                  >
+                    <span>
+                      {{ notification.message }}
+                    </span>
+                  </NuxtLink>
+                </div>
+              </div>
+              <!-- 전체 보기 버튼 -->
+              <div>
+                <NuxtLink to="/proposals/me">
+                  <div
+                    class="bg-gray-100 absolute bottom-0 w-full cursor-pointer p-1 text-center"
+                  >
+                    전체 보기
+                  </div>
                 </NuxtLink>
               </div>
             </div>
@@ -65,8 +78,8 @@
 
       <!-- 로그인 전 -->
       <div class="flex gap-5" v-show="!myName">
-        <nuxt-link to="/login" class="font-bold">로그인</nuxt-link>
-        <nuxt-link to="/join" class="font-bold">회원가입</nuxt-link>
+        <nuxt-link to="/auth/login" class="font-bold">로그인</nuxt-link>
+        <nuxt-link to="/auth/join" class="font-bold">회원가입</nuxt-link>
       </div>
     </div>
   </div>
@@ -101,10 +114,16 @@ export default {
           console.log(err)
         })
     },
-    async setToRead(notifiactionId) {
+    async setToRead(notification) {
       await this.$axios
-        .$post(`/notifications/read/${notifiactionId}`)
-        .then((res) => {})
+        .$patch(`/notifications/read/${notification.id}`)
+        .then((res) => {
+          if (notification.type == 'question') {
+            this.$router.push(`/projects/${notification.relatedId}`)
+          } else if (notification.type == 'proposal') {
+            this.$router.push(`/proposals/me`)
+          }
+        })
         .catch((err) => {
           console.log(err)
         })
