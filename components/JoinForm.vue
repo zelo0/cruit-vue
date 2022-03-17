@@ -237,7 +237,7 @@ export default {
       await this.$axios
         .post('/users', this.form)
         .then((res) => {
-          this.$router.push('/login')
+          this.$router.replace('/auth/login')
         })
         .catch((err) => {
           if (err.response.data.message) {
