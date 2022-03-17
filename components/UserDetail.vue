@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     onclick() {
-      this.$router.push(`/proposals/${this.user.name}`)
+      this.$router.push(`/proposals/${this.user.position}/${this.user.name}`)
     },
   },
   async fetch() {
