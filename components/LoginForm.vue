@@ -10,7 +10,7 @@
     >
       계정이 없으신가요?
       <NuxtLink
-        to="/join"
+        to="/auth/join"
         class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
       >
         회원가입</NuxtLink
@@ -184,7 +184,7 @@ export default {
       await this.$axios
         .post('/login', this.form)
         .then((res) => {
-          this.$router.push('/')
+          this.$router.replace('/')
         })
         .catch((err) => {
           if (err.response.data.message) {
