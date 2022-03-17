@@ -1,9 +1,9 @@
-export default function ({ $axios, redirect, store, route }) {
+export default function ({ $axios, app }) {
   $axios.onError((error) => {
     if (error.response.status === 401) {
-      redirect('/login')
+      app.router.replace('/auth/login')
     } else if (error.response.status == 403) {
-      redirect('/error/403')
+      app.router.replace('/error/403')
     }
   })
 }
