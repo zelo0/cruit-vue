@@ -45,6 +45,10 @@
     @apply rounded-xl p-2 font-semibold hover:bg-blue-200 bg-blue-100 ml-2;
   }
 
+  .small-btn {
+    @apply rounded-lg px-2 font-semibold  hover:bg-blue-200 bg-blue-100 ml-2;
+  }
+
   .red-btn {
     @apply rounded-xl p-2 font-semibold hover:bg-red-200 bg-red-100 ml-2;
   }
@@ -65,6 +69,10 @@
     @apply md:w-4/5 p-4;
   }
 
+  .ver-gap8-grid {
+    @apply gap-8 grid grid-flow-row;
+  }
+
   .ver-gap5-grid {
     @apply gap-5 grid grid-flow-row;
   }
@@ -78,7 +86,11 @@
   }
 
   .big-profile {
-    @apply rounded-full w-40 h-40 object-contain shadow-xl;
+    @apply rounded-full w-40 h-40 object-cover shadow-xl;
+  }
+
+  .stack-grid {
+    @apply grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 my-3;
   }
 }
 
@@ -101,4 +113,19 @@ body,
 }
 .page-leave-to {
   @apply opacity-0 -translate-x-10;
+}
+
+/* 토글버튼 css */
+.toggle-circle {
+  top: 0.2rem;
+  left: 0.25rem;
+}
+
+input:checked ~ .toggle-circle {
+  /* @apply translate-x-full */
+  transform: translateX(100%);
+}
+
+input:checked ~ .toggle-path {
+  @apply bg-blue-200;
 }
