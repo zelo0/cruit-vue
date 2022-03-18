@@ -6,6 +6,7 @@
           v-for="(item, index) in projects"
           :key="item.id"
           :project="item"
+          @clicked="movePage"
         />
       </div>
     </div>
@@ -48,6 +49,9 @@ export default {
       increaseCurrentPage: 'projects/increaseCurrentPage',
       decreaseCurrentPage: 'projects/decreaseCurrentPage',
     }),
+    movePage(projectId) {
+      this.$router.push(`/projects/${projectId}`)
+    },
   },
   watch: {
     currentPage: function (newVal) {

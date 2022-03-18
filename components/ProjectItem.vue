@@ -36,7 +36,7 @@ export default {
   props: ['project'],
   methods: {
     onclick() {
-      this.$router.push(`/projects/${this.project.id}`)
+      this.$emit('clicked', this.project.id)
     }
   }
 }
