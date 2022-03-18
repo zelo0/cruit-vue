@@ -14,7 +14,15 @@
       <!-- 로그인 했을 시 -->
       <div class="flex gap-5 font-bold" v-show="myName">
         <!-- 내 정보로 가는 링크 -->
-        <nuxt-link to="/users/me">{{ myName }}</nuxt-link>
+        <div>
+          <!-- <nuxt-link to="/users/me">{{ myName }}</nuxt-link> -->
+          <!-- 유저 아이콘 보여주기 -->
+          <nuxt-link to="/users/me">
+            <client-only>
+              <unicon name="user-circle"></unicon>
+            </client-only>
+          </nuxt-link>
+        </div>
 
         <!-- 알림 -->
         <div
@@ -70,6 +78,15 @@
               </div>
             </div>
           </TransitionSlideUpDown>
+        </div>
+
+        <!-- 프로젝트 바로가기 -->
+        <div>
+          <NuxtLink to="/projects/me">
+            <client-only>
+              <unicon name="file-alt" />
+            </client-only>
+          </NuxtLink>
         </div>
 
         <!-- 로그아웃 버튼 -->
