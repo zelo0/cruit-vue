@@ -57,6 +57,7 @@ export const actions = {
       })
       .catch((err) => {
         commit('setHasError', true)
+        console.log(err)
       })
   },
   // async getProjectsByNoFilter({ commit, state }) {
