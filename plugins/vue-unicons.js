@@ -5,7 +5,16 @@ import {
   uniAngleRightB,
   uniTimes,
   uniArrowRight,
+  uniUserCircle,
+  uniFileAlt,
 } from 'vue-unicons/dist/icons'
 
-Unicon.add([uniBell, uniAngleRightB, uniTimes, uniArrowRight])
+Unicon.add([
+  uniBell,
+  uniAngleRightB,
+  uniTimes,
+  uniArrowRight,
+  uniUserCircle,
+  uniFileAlt,
+])
 Vue.use(Unicon)
