@@ -4,7 +4,8 @@
 
 @layer base {
   * {
-    word-break: keep-all;
+    word-break: break-all;
+    /* keep-all을 적용할 시 단어를 끊지 않은 긴 글자는 긴 가로 스크롤이 생김 */
   }
 
   p {
@@ -24,11 +25,11 @@
   }
 
   h1 {
-    @apply text-2xl font-black;
+    @apply text-lg font-black;
   }
 
   h2 {
-    @apply text-lg font-bold;
+    @apply text-base font-bold;
   }
 
   h3 {
@@ -90,7 +91,7 @@
   }
 
   .stack-grid {
-    @apply grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 my-3;
+    @apply grid gap-5 lg:grid-cols-5 md:grid-cols-3 xs:grid-cols-2 my-3;
   }
 }
 
