@@ -27,7 +27,7 @@ export default {
     },
   },
   async fetch() {
-    this.$axios
+    await this.$axios
       .$get('/projects/me')
       .then((res) => {
         this.projects = res.data.projects
