@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="ring-2 rounded-xl p-4 cursor-pointer" @click="onclick">
+  <div class="ring-2 rounded-xl p-4 cursor-pointer shadow-lg" @click="onclick">
     <h2 class="text-lg font-black">{{ project.name }}</h2>
 
     <!-- 프론트엔드 파트 -->
