@@ -1,6 +1,6 @@
 <template lang="">
   <div
-    class="relative ring-2 p-2 rounded-md cursor-pointer"
+    class="relative ring-2 p-2 rounded-md cursor-pointer shadow-lg"
     :class="{
       'ring-green-400 hover:bg-green-50': user.position == 'BACKEND',
       'ring-purple-400 hover:bg-purple-50': user.position == 'FRONTEND',
