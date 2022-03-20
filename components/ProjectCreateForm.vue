@@ -11,7 +11,10 @@
       <div>
         <label class="boldAndSpace" for="title">내용</label>
         <client-only placeholder="Loading....">
-          <MarkEditor ref="editor" />
+          <MarkEditor
+            ref="editor"
+            placeholder="이 곳에 프로젝트 모집 글을 작성해주세요"
+          />
         </client-only>
       </div>
       <hr />
@@ -30,9 +33,9 @@ export default {
     }
   },
   methods: {
-    onsubmit() {
+    async onsubmit() {
       const description = this.$refs.editor.getHtml()
-      this.$axios
+      await this.$axios
         .$post('/projects', { name: this.name, description })
         .then((res) => {
           const savedProjectId = res.data.projectId
