@@ -12,13 +12,11 @@
 </template>
 <script>
 export default {
-  props: ['initialValue'],
+  props: ['initialValue', 'placeholder'],
   data() {
     return {
       editorOptions: {
-        placeholder: this.initialValue
-          ? ''
-          : '이 곳에 프로젝트원 모집 글을 작성해주세요',
+        placeholder: this.initialValue ? '' : this.placeholder,
         hideModeSwitch: true,
         language: 'ko-KR',
         // theme: 'dark',
