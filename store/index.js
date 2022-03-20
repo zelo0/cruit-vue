@@ -38,6 +38,8 @@ export const actions = {
         commit('setNotifications', res.data.notifications)
       })
       .catch((err) => {
+        commit('setMyName', '')
+        commit('setMyPosition', '')
         console.log('에러 발생')
       })
   },
