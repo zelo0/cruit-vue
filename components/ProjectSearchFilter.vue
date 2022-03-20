@@ -6,7 +6,7 @@
 
     <div>
       <h2 class="pb-2">프론트엔드</h2>
-      <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
+      <div class="stack-grid">
         <SelectableStackItem
           :iniSelected="isIncluded(item)"
           :data="item"
@@ -20,7 +20,7 @@
 
     <div>
       <h2 class="pb-2">백엔드</h2>
-      <div class="grid gap-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2">
+      <div class="stack-grid">
         <SelectableStackItem
           :iniSelected="isIncluded(item)"
           :data="item"
