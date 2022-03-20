@@ -102,7 +102,7 @@
 
     <!-- <div class="boldAndSpace">나에 대한 평가</div>
     <hr /> -->
-
+    <!-- 
     <div class="boldAndSpace flex justify-between">
       <span>참여한 프로젝트</span>
       <client-only>
@@ -133,7 +133,7 @@
         <unicon name="angle-right-b" />
       </client-only>
     </div>
-    <hr />
+    <hr /> -->
   </div>
 </template>
 <script>
