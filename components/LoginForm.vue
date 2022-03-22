@@ -104,9 +104,9 @@
       v-show="serverErrorMessage"
       class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold text-black mb-5"
     >
-      <p>
+      <h2>
         {{ serverErrorMessage }}
-      </p>
+      </h2>
     </div>
     <!-- 로그인 양식 -->
     <form @submit.prevent="login">
@@ -140,7 +140,7 @@
             type="password"
             class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
           />
-          <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
+          <!-- <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
             <svg
               width="16"
               height="16"
@@ -153,7 +153,7 @@
                 fill="#71717A"
               />
             </svg>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="mt-8">
