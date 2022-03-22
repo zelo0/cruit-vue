@@ -42,7 +42,7 @@ export default {
           this.$router.push(`/projects/${savedProjectId}`)
         })
         .catch((err) => {
-          console.log('에러 발생')
+          // console.log('에러 발생')
         })
     },
   },

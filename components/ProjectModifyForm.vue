@@ -92,7 +92,7 @@ export default {
           alert('변경됐습니다')
         })
         .catch((err) => {
-          console.log('에러 발생')
+          // console.log('에러 발생')
         })
     },
     async changeStatus() {
@@ -105,7 +105,7 @@ export default {
           alert('변경됐습니다')
         })
         .catch((err) => {
-          console.log('에러')
+          // console.log('에러')
         })
     },
   },
@@ -116,7 +116,7 @@ export default {
         this.project = res.data
       })
       .catch((err) => {
-        console.log('에러 발생')
+        // console.log('에러 발생')
       })
   },
 }

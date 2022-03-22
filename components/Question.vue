@@ -144,7 +144,7 @@ export default {
         .$patch(`/questions/${this.question.id}`, { content })
         .then((res) => {})
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
     /* 서버에 질문글 삭제 요청 */
@@ -164,7 +164,7 @@ export default {
           alert('삭제됐습니다')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },

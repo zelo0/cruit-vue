@@ -44,7 +44,7 @@ export default {
           alert('삭제됐습니다')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },

@@ -33,7 +33,7 @@ export default {
         this.projects = res.data.projects
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   },
 }

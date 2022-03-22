@@ -128,7 +128,7 @@ export default {
           this.$router.push('/')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
     async setToRead(notification) {
@@ -142,7 +142,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },

@@ -24,7 +24,7 @@ export default {
           this.$emit('createdQuestion', res.data)
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },

@@ -107,7 +107,7 @@ export default {
           this.$router.replace('/proposals/me')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },
@@ -118,7 +118,7 @@ export default {
         this.involvedParts = res.data.involvedParts
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   },
 }

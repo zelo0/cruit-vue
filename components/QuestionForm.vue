@@ -25,7 +25,7 @@ export default {
             this.$emit('createdQuestion', res.data)
           })
           .catch((err) => {
-            console.log(err)
+            // console.log(err)
           })
       } else {
         /* 질문의 질문 */
@@ -40,7 +40,7 @@ export default {
             this.$emit('createdSubQuestion', res.data)
           })
           .catch((err) => {
-            console.log(err)
+            // console.log(err)
           })
       }
     },

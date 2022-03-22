@@ -57,7 +57,7 @@ export const actions = {
       })
       .catch((err) => {
         commit('setHasError', true)
-        console.log(err)
+        // console.log(err)
       })
   },
 }

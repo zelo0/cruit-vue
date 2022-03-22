@@ -156,7 +156,7 @@ export default {
           alert('변경됐습니다')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
     async removeMember() {
@@ -168,7 +168,7 @@ export default {
           alert('제거됐습니다')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
     async changeStatus() {
@@ -180,7 +180,7 @@ export default {
           alert('변경됐습니다')
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
   },
@@ -191,7 +191,7 @@ export default {
         this.part = res.data
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   },
 }

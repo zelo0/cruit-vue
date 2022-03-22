@@ -142,7 +142,7 @@ export default {
           this.$router.back()
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     },
     addQuestion(question) {
@@ -158,7 +158,9 @@ export default {
       }).then(res=>{
         this.$refs.joinDialog.hide()
         alert("프로젝트 참여 요청을 보냈습니다")
-      }).catch(err=>{console.log(err)})
+      }).catch(err=>{
+        // console.log(err)
+      })
     },
     async joinNonLeaderRequest() {
       await this.$axios.$post(`/proposals/project`, {
@@ -167,7 +169,9 @@ export default {
       }).then(res=>{
         this.$refs.joinDialog.hide()
         alert("프로젝트 참여 요청을 보냈습니다")
-      }).catch(err=>{console.log(err)})
+      }).catch(err=>{
+        // console.log(err)
+        })
     },
     async onClickJoinBtn() {
       // 내 포지션의 파트에 리더가 없으면 
@@ -220,7 +224,7 @@ export default {
         this.project = res.data
       })
       .catch((err) => {
-        console.log('에러 발생')
+        // console.log('에러 발생')
       })
   },
 }

@@ -190,7 +190,7 @@ export default {
           this.me.profile = res.data.profile
         })
         .catch((err) => {
-          console.log('파일 업로드 실패')
+          // console.log('파일 업로드 실패')
         })
     },
     async changeName() {
@@ -202,7 +202,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
     async changePosition() {
@@ -214,7 +214,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
     async changeCanBeLeader() {
@@ -225,7 +225,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
     async changeStacks() {
@@ -236,7 +236,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
     async changeIntroduction() {
@@ -249,7 +249,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
     async changeGithub() {
@@ -260,7 +260,7 @@ export default {
         })
         .catch((err) => {
           console.error('에러')
-          console.log(err)
+          // console.log(err)
         })
     },
   },

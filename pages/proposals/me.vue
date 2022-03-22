@@ -195,7 +195,7 @@ export default {
           proposal.status = 'ACCEPTED'
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          // console.log(err.response.data.message)
         })
     },
     async denyProposal(proposal) {
@@ -206,7 +206,7 @@ export default {
           proposal.status = 'REFUSED'
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          // console.log(err.response.data.message)
         })
     },
   },
@@ -218,7 +218,7 @@ export default {
         this.receivedProposals = res.data.receivedProposals
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   },
 }

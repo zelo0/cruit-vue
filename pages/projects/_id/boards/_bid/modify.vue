@@ -54,7 +54,7 @@ export default {
           this.$router.back()
         })
         .catch((err) => {
-          console.log('에러 발생')
+          // console.log('에러 발생')
         })
     },
   },
@@ -65,7 +65,7 @@ export default {
         this.post = res.data
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   },
 }
