@@ -190,7 +190,7 @@ export default {
           this.me.profile = res.data.profile
         })
         .catch((err) => {
-          consoel.log('파일 업로드 실패')
+          console.log('파일 업로드 실패')
         })
     },
     async changeName() {

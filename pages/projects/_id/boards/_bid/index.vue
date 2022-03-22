@@ -21,7 +21,7 @@ export default {
         this.posts = res.data.posts
       })
       .catch((err) => {
-        consoel.log(err)
+        console.log(err)
       })
   },
 }
