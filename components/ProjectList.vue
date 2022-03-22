@@ -1,7 +1,10 @@
 <template lang="">
   <div>
     <div v-if="!hasError">
-      <div class="grid xl:grid-cols-4 sm:grid-cols-2 gap-10">
+      <div
+        v-if="projects.length"
+        class="grid xl:grid-cols-4 sm:grid-cols-2 gap-10"
+      >
         <ProjectItem
           v-for="(item, index) in projects"
           :key="item.id"
@@ -9,6 +12,7 @@
           @clicked="movePage"
         />
       </div>
+      <div class="font-bold text-center" v-else>검색 결과가 없습니다</div>
     </div>
     <div v-else class="text-red-400 font-bold text-2xl text-center">
       에러가 발생했습니다
