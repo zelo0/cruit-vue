@@ -2,7 +2,7 @@
   <div>
     <div v-if="user" class="ver-gap5-grid">
       <!-- 프로필 이미지, 이름 -->
-      <div class="place-self-center">
+      <div class="place-self-center text-center">
         <img :src="user.profile" alt="유저 프로필 이미지" class="big-profile" />
         <h2 class="mt-3">{{ user.name }}</h2>
       </div>
