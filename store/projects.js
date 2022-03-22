@@ -60,18 +60,4 @@ export const actions = {
         console.log(err)
       })
   },
-  // async getProjectsByNoFilter({ commit, state }) {
-  //   await this.$axios
-  //     .$get(`/projects?page=${state.currentPage}`)
-  //     .then((res) => {
-  //       commit('setProjects', res.data)
-  //       commit('setHasPrevious', res.hasPrevious)
-  //       commit('setHasNext', res.hasNext)
-  //       commit('setTotalPage', res.totalPage)
-  //       commit('setCurrentPage', res.currentPage)
-  //     })
-  //     .catch((err) => {
-  //       commit('setHasError', true)
-  //     })
-  // },
 }
