@@ -67,7 +67,7 @@
   }
 
   .container {
-    @apply md:w-4/5 p-4;
+    @apply md:w-4/5 xs:w-full max-w-full p-4;
   }
 
   .ver-gap8-grid {
