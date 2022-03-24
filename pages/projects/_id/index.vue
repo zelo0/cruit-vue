@@ -4,7 +4,7 @@
       <div v-if="project" class="ver-gap5-grid">
         <!-- 제목 -->
         <div
-          class="flex justify-between items-center pb-3 border-b-4 border-blue-500"
+          class="flex flex-wrap justify-between items-center pb-3 border-b-4 border-blue-500"
         >
           <!-- 프로젝트 제목 -->
           <h1 class="">{{ project.name }}</h1>
@@ -124,7 +124,7 @@ export default {
   },
   methods: {
     clickedProjectModifyBtn() {
-      this.$router.push(`/projects/modify/${this.$route.params.id}`)
+      this.$router.push(`/projects/${this.$route.params.id}/modify`)
     },
     hideDeleteDialog() {
       this.$refs.deleteDialog.hide()
