@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 ring-2">
+  <div class="mt-2 ring-2 dark:text-blue-200">
     <ToastEditor
       ref="toasteditor"
       :initialValue="initialValue"
@@ -37,6 +37,7 @@ export default {
 </script>
 <style>
 .toastui-editor-contents p {
-  color: white !important;
+  @apply dark:text-white text-black !important;
+  /* color: white !important; */
 }
 </style>
