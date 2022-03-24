@@ -4,6 +4,22 @@
       <div class="table table-fixed w-full">
       <h2 class="overflow-ellipsis table-cell overflow-hidden whitespace-nowrap">{{ project.name }}</h2>
       </div>
+
+      <div>
+        <button
+          @click.stop="clickedProjectModifyBtn"
+          class="myBtn"
+        >
+          수정
+        </button>
+        <!-- 프로젝트 삭제 버튼 -->
+        <button
+          @click.stop="clickedProjectDeleteBtn"
+          class="red-btn"
+        >
+          삭제
+        </button>
+      </div>
     </div>
 
     <!-- 프론트엔드 파트 -->
@@ -63,6 +79,7 @@ export default {
         .then((res) => {
           this.hideDeleteDialog()
           alert('삭제됐습니다')
+          this.$emit('deleted', this.project.id)
         })
         .catch((err) => {
           // console.log(err)
