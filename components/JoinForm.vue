@@ -13,9 +13,9 @@
       v-show="serverErrorMessage"
       class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold text-black mb-5"
     >
-      <p>
+      <h2>
         {{ serverErrorMessage }}
-      </p>
+      </h2>
     </div>
 
     <div>
@@ -29,7 +29,7 @@
         type="email"
         class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       />
-      <div class="text-red-500 font-semibold" v-show="errorMessage.email">
+      <div class="error-message" v-show="errorMessage.email">
         {{ errorMessage.email }}
       </div>
     </div>
@@ -45,7 +45,7 @@
         type="text"
         class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
       />
-      <div class="text-red-500 font-semibold" v-show="errorMessage.name">
+      <div class="error-message" v-show="errorMessage.name">
         {{ errorMessage.name }}
       </div>
     </div>
@@ -77,7 +77,7 @@
           </svg>
         </div> -->
       </div>
-      <div class="text-red-500 font-semibold" v-show="errorMessage.password">
+      <div class="error-message" v-show="errorMessage.password">
         {{ errorMessage.password }}
       </div>
     </div>
@@ -101,7 +101,7 @@
         <option value="BACKEND">백엔드</option>
         <option value="DESIGN">디자인</option>
       </select>
-      <div class="text-red-500 font-semibold" v-show="errorMessage.position">
+      <div class="error-message" v-show="errorMessage.position">
         {{ errorMessage.position }}
       </div>
     </div>
@@ -256,4 +256,8 @@ export default {
   },
 }
 </script>
-<style lang=""></style>
+<style lang="css" scoped>
+.error-message {
+  @apply text-red-500 font-semibold text-sm;
+}
+</style>
