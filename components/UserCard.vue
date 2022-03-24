@@ -2,9 +2,9 @@
   <div
     class="relative ring-2 p-2 rounded-md cursor-pointer shadow-lg"
     :class="{
-      'ring-green-400 hover:bg-green-50': user.position == 'BACKEND',
-      'ring-purple-400 hover:bg-purple-50': user.position == 'FRONTEND',
-      'ring-yellow-400 hover:bg-yellow-50': user.position == 'DESIGN',
+      'ring-green-400 active:bg-green-50': user.position == 'BACKEND',
+      'ring-purple-400 active:bg-purple-50': user.position == 'FRONTEND',
+      'ring-yellow-400 active:bg-yellow-50': user.position == 'DESIGN',
     }"
     @click="onclick"
   >

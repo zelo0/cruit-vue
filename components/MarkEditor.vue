@@ -35,3 +35,8 @@ export default {
   },
 }
 </script>
+<style>
+.toastui-editor-contents p {
+  color: white !important;
+}
+</style>

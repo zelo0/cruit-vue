@@ -1,17 +1,15 @@
 <template lang="">
   <form
     @submit.prevent="submit"
-    class="bg-white rounded lg:w-1/3 md:w-1/2 w-full p-10 drop-shadow-xl"
+    class="bg-white dark:bg-night-200 dark:text-white rounded lg:w-1/3 md:w-1/2 w-full p-10 drop-shadow-xl"
   >
-    <p
-      class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800 mb-5"
-    >
+    <p class="focus:outline-none text-2xl font-extrabold leading-6 mb-5">
       회원가입
     </p>
 
     <div
       v-show="serverErrorMessage"
-      class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold text-black mb-5"
+      class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold mb-5"
     >
       <h2>
         {{ serverErrorMessage }}
@@ -19,7 +17,7 @@
     </div>
 
     <div>
-      <label id="email" class="text-sm font-medium leading-none text-gray-800">
+      <label id="email" class="text-sm font-medium leading-none">
         이메일
       </label>
       <input
@@ -27,7 +25,7 @@
         v-model="form.email"
         aria-labelledby="email"
         type="email"
-        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
       />
       <div class="error-message" v-show="errorMessage.email">
         {{ errorMessage.email }}
@@ -35,15 +33,13 @@
     </div>
 
     <div class="mt-6">
-      <label id="name" class="text-sm font-medium leading-none text-gray-800">
-        닉네임
-      </label>
+      <label id="name" class="text-sm font-medium leading-none"> 닉네임 </label>
       <input
         @change="validateName"
         v-model="form.name"
         aria-labelledby="name"
         type="text"
-        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
       />
       <div class="error-message" v-show="errorMessage.name">
         {{ errorMessage.name }}
@@ -51,7 +47,7 @@
     </div>
 
     <div class="mt-6 w-full">
-      <label for="pass" class="text-sm font-medium leading-none text-gray-800">
+      <label for="pass" class="text-sm font-medium leading-none">
         비밀번호
       </label>
       <div class="relative flex items-center justify-center">
@@ -60,7 +56,7 @@
           v-model="form.password"
           id="pass"
           type="password"
-          class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+          class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
         />
         <!-- <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
           <svg
@@ -83,10 +79,7 @@
     </div>
 
     <div class="mt-6">
-      <label
-        for="position"
-        class="text-sm font-medium leading-none text-gray-800"
-      >
+      <label for="position" class="text-sm font-medium leading-none">
         포지션
       </label>
       <select
@@ -94,7 +87,7 @@
         v-model="form.position"
         name="position"
         id="position"
-        class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+        class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
       >
         <option value="">개발 포지션을 선택해주세요</option>
         <option value="FRONTEND">프론트엔드</option>

@@ -1,17 +1,13 @@
 <template lang="">
-  <div class="bg-white drop-shadow-xl rounded lg:w-1/3 md:w-1/2 w-full p-10">
-    <p
-      class="focus:outline-none text-2xl font-extrabold leading-6 text-gray-800"
-    >
-      로그인
-    </p>
-    <div
-      class="focus:outline-none text-sm mt-4 font-medium leading-none text-gray-500 mb-10"
-    >
+  <div
+    class="bg-white dark:bg-night-200 dark:text-white drop-shadow-xl rounded lg:w-1/3 md:w-1/2 w-full p-10"
+  >
+    <p class="focus:outline-none text-2xl font-extrabold leading-6">로그인</p>
+    <div class="focus:outline-none text-sm mt-4 font-medium leading-none mb-10">
       계정이 없으신가요?
       <NuxtLink
         to="/auth/join"
-        class="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none text-gray-800 cursor-pointer"
+        class="focus:outline-none focus:underline hover:underline text-sm font-medium leading-none cursor-pointer"
       >
         회원가입</NuxtLink
       >
@@ -102,7 +98,7 @@
     <!-- 로그인 실패 시 에러 메시지 -->
     <div
       v-show="serverErrorMessage"
-      class="ring-red-400 ring-2 rounded p-3 text-center text-lg font-extrabold text-black mb-5"
+      class="ring-red-400 ring-2 rounded p-3 my-2 text-center text-lg font-extrabold"
     >
       <h2>
         {{ serverErrorMessage }}
@@ -111,10 +107,7 @@
     <!-- 로그인 양식 -->
     <form @submit.prevent="login">
       <div>
-        <label
-          id="email"
-          class="text-sm font-medium leading-none text-gray-800"
-        >
+        <label id="email" class="text-sm font-medium leading-none">
           이메일
         </label>
         <input
@@ -122,14 +115,11 @@
           v-model="form.email"
           aria-labelledby="email"
           type="email"
-          class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+          class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
         />
       </div>
       <div class="mt-6 w-full">
-        <label
-          for="password"
-          class="text-sm font-medium leading-none text-gray-800"
-        >
+        <label for="password" class="text-sm font-medium leading-none">
           비밀번호
         </label>
         <div class="relative flex items-center justify-center">
@@ -138,7 +128,7 @@
             v-model="form.password"
             id="password"
             type="password"
-            class="border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+            class="border rounded text-xs font-medium leading-none py-3 w-full pl-3 mt-2"
           />
           <!-- <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
             <svg

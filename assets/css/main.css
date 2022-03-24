@@ -17,7 +17,7 @@
   input[type='password'],
   select,
   textarea {
-    @apply ring-2 p-3;
+    @apply ring-2 p-3 dark:bg-gray-500;
   }
 
   textarea {
@@ -43,23 +43,23 @@
   }
 
   .myBtn {
-    @apply rounded-xl p-2 font-semibold hover:bg-blue-200 bg-blue-100 ml-2;
+    @apply rounded-xl p-2 font-semibold dark:hover:bg-night-300 dark:bg-night-100 hover:bg-blue-200 bg-blue-100 ml-2;
   }
 
   .small-btn {
-    @apply rounded-lg px-2 font-semibold  hover:bg-blue-200 bg-blue-100 ml-2;
+    @apply rounded-lg px-2 font-semibold dark:hover:bg-night-300 dark:bg-night-100 hover:bg-blue-200 bg-blue-100 ml-2;
   }
 
   .red-btn {
-    @apply rounded-xl p-2 font-semibold hover:bg-red-200 bg-red-100 ml-2;
+    @apply rounded-xl p-2 font-semibold hover:bg-red-200 bg-red-100 ml-2 dark:bg-purple-500 dark:hover:bg-purple-700;
   }
 
   .gray-btn {
-    @apply p-1 bg-gray-100 hover:bg-gray-200;
+    @apply p-1 bg-gray-100 hover:bg-gray-200 dark:hover:bg-night-300 dark:bg-night-100;
   }
 
   .w-full-btn {
-    @apply w-full bg-blue-300 hover:bg-blue-500 duration-100 p-4 rounded-md text-white;
+    @apply w-full bg-blue-300 hover:bg-blue-500 duration-100 p-4 rounded-md dark:hover:bg-night-300 dark:bg-night-100 text-white;
   }
 
   .inputBorder {

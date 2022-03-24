@@ -1,6 +1,6 @@
 <template lang="">
   <div
-    class="bg-red-50 flex justify-between py-2 px-5 border-b-2 border-gray-300 shadow"
+    class="bg-red-50 dark:bg-night-300 flex justify-between py-2 px-5 border-gray-300 shadow"
   >
     <nuxt-link to="/" class="basis-1/4 mr-2"><h2>CRUIT</h2></nuxt-link>
 
@@ -34,7 +34,9 @@
             <unicon name="bell" fill="black"></unicon>
           </client-only>
           <!-- 알림 개수 -->
-          <div class="absolute -right-2 -top-2 rounded-full bg-yellow-100 px-1">
+          <div
+            class="absolute -right-2 -top-2 rounded-full bg-yellow-100 dark:bg-purple-400 px-1"
+          >
             {{ notificationCount }}
           </div>
 
@@ -42,7 +44,7 @@
           <TransitionSlideUpDown>
             <div
               v-show="isShowingNotification"
-              class="absolute z-40 top-7 right-2 border-2 border-black bg-white rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
+              class="absolute z-40 top-7 right-2 border-2 border-black bg-white dark:bg-night-100 dark:text-white rounded-md font-normal w-60 drop-shadow-xl h-80 overflow-y-auto"
             >
               <!-- 알림 영역 -->
               <div>
@@ -67,10 +69,10 @@
                 </div>
               </div>
               <!-- 전체 보기 버튼 -->
-              <div>
+              <div class="">
                 <NuxtLink to="/proposals/me">
                   <div
-                    class="bg-gray-100 absolute bottom-0 w-full cursor-pointer p-1 text-center"
+                    class="bg-gray-100 dark:text-white dark:bg-night-300 absolute bottom-0 w-full cursor-pointer p-1 text-center"
                   >
                     전체 보기
                   </div>
