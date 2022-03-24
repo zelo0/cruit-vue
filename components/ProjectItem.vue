@@ -1,7 +1,9 @@
 <template lang="">
-  <div class="ring-2 rounded-xl p-4 cursor-pointer shadow-lg" @click.self="onclick">
+  <div class="ring-2 rounded-xl p-4 cursor-pointer shadow-lg" @click="onclick">
     <div class="flex flex-wrap items-center p-1">
-      <h2 class="w-full overflow-ellipsis block overflow-hidden whitespace-nowrap">{{ project.name }}</h2>
+      <div class="table table-fixed w-full">
+      <h2 class="overflow-ellipsis table-cell overflow-hidden whitespace-nowrap">{{ project.name }}</h2>
+      </div>
 
       <div>
         <button
