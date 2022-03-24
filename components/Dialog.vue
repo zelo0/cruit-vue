@@ -2,7 +2,7 @@
   <div
     v-show="isDialogShown"
     class="bg-black bg-opacity-50 flex z-10 fixed left-0 top-0 w-screen h-screen items-center justify-center"
-    @click="isDialogShown = false"
+    @click.prevent.stop="isDialogShown = false"
   >
     <!-- 팝업 창 -->
     <div class="bg-white py-10 px-7 rounded-lg relative" @click.stop>
