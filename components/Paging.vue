@@ -15,7 +15,10 @@
         class="text-lg p-1"
         v-for="(item, index) in pageNums"
         :key="index"
-        :class="{ grey: item != pageIndicator, black: item == pageIndicator }"
+        :class="{
+          'text-gray-300': item != pageIndicator,
+          'text-black dark:text-blue-300': item == pageIndicator,
+        }"
       >
         {{ item }}
       </button>
