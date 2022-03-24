@@ -29,7 +29,7 @@ export default {
     },
     removeInPage(projectId) {
       this.projects.splice(
-        this.projects.findIndex((project) => (project.id = projectId)),
+        this.projects.findIndex((project) => project.id == projectId),
         1
       )
     },
