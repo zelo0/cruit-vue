@@ -174,6 +174,12 @@ export default {
         })
     },
     async onClickJoinBtn() {
+      // 로그인 상태가 아니면 로그인 페이지로 리다이렉트
+      if (!this.$store.getters.authenticated) {
+        this.$router.push('/auth/login')
+        return
+      }
+
       // 내 포지션의 파트에 리더가 없으면 
       // 리더 자리 들어갈 지 결정하는 다이얼로그 띄움
       if (!this.hasLeaderOfMyPosition) {
