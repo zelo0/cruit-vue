@@ -7,5 +7,6 @@
 <script>
 export default {
   name: 'MePage',
+  middleware: 'authenticated',
 }
 </script>
