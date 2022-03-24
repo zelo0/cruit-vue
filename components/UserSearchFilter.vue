@@ -31,6 +31,20 @@
     </div>
 
     <div>
+      <h2 class="pb-2">디자인</h2>
+      <div class="stack-grid">
+        <SelectableStackItem
+          :iniSelected="isIncluded(item)"
+          :data="item"
+          v-for="(item, index) in designStacks"
+          :key="index"
+          @onSelectStackItem="onSelectStackItem"
+          @onUnselectStackItem="onUnselectStackItem"
+        />
+      </div>
+    </div>
+
+    <div>
       <h2 class="pb-2">리더 가능 여부</h2>
       <div class="font-bold">
         <input
@@ -76,6 +90,7 @@ export default {
     return {
       frontendStacks: [],
       backendStacks: [],
+      designStacks: [],
     }
   },
   computed: {
@@ -121,6 +136,8 @@ export default {
             this.frontendStacks.push(data[i])
           } else if (data[i].dtype == 'BACKEND') {
             this.backendStacks.push(data[i])
+          } else {
+            this.designStacks.push(data[i])
           }
         }
       })
