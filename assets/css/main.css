@@ -102,6 +102,7 @@ body,
 #__layout {
   height: 100%;
   width: 100%;
+  @apply dark:bg-night-200;
 }
 
 /* 페이지 전환 트랜지션 */
