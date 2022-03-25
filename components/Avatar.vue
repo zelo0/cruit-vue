@@ -2,7 +2,7 @@
   <div>
     <img
       :src="url"
-      class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover"
+      class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover dark:bg-night-100"
     />
   </div>
 </template>

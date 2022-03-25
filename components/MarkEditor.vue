@@ -38,6 +38,5 @@ export default {
 <style>
 .toastui-editor-contents p {
   @apply dark:text-white text-black !important;
-  /* color: white !important; */
 }
 </style>
