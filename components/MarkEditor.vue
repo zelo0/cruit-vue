@@ -1,13 +1,16 @@
 <template>
   <div class="mt-2 ring-2 dark:text-blue-200">
-    <ToastEditor
-      ref="toasteditor"
-      :initialValue="initialValue"
-      :options="editorOptions"
-      height="500px"
-      initialEditType="wysiwyg"
-      previewStyle="vertical"
-    />
+    <client-only>
+      <quill-editor v-model="content" :options="editorOption" ref="editor" />
+
+      <input
+        type="file"
+        id="file"
+        accept="image/*"
+        @change="uploadHandler"
+        hidden
+      />
+    </client-only>
   </div>
 </template>
 <script>
@@ -15,28 +18,63 @@ export default {
   props: ['initialValue', 'placeholder'],
   data() {
     return {
-      editorOptions: {
+      content: this.initialValue ? this.initialValue : '',
+      editorOption: {
+        theme: 'snow',
         placeholder: this.initialValue ? '' : this.placeholder,
-        hideModeSwitch: true,
-        language: 'ko-KR',
-        // theme: 'dark',
+        modules: {
+          toolbar: {
+            container: [
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block'],
+              [{ list: 'ordered' }, { list: 'bullet' }],
+              [{ size: ['small', false, 'large', 'huge'] }],
+              [{ color: [] }, { background: [] }],
+              [{ align: [] }],
+              ['link', 'image'],
+            ],
+            handlers: {
+              image: function () {
+                document.getElementById('file').click()
+              },
+            },
+          },
+          imageResize: {
+            modules: ['Resize', 'DisplaySize', 'Toolbar'],
+          },
+        },
       },
     }
   },
   methods: {
     getHtml() {
-      let text
-      text = this.$refs.toasteditor.invoke('getHTML')
-      return text
+      // .quill 호출 필요
+      return this.$refs.editor.quill.root.innerHTML
     },
-  },
-  mounted() {
-    this.$refs.toasteditor.invoke('moveCursorToEnd')
+    uploadHandler(e) {
+      const form = new FormData()
+      form.append('file', e.target.files[0])
+
+      this.$axios
+        .$post('/images', form, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((res) => {
+          console.log(res.data)
+          const range = this.$refs.editor.quill.getSelection()
+          this.$refs.editor.quill.insertEmbed(
+            range.index,
+            'image',
+            res.data.fileUrl
+          )
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
 }
 </script>
-<style>
-.toastui-editor-contents p {
-  @apply dark:text-white text-black !important;
-}
-</style>
+<style lang="css" scoped></style>
