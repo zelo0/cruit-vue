@@ -7,8 +7,7 @@
   >
     <!-- 질문자 -->
     <div class="flex items-center">
-      <Avatar :url="question.questioner.profile" />
-      <p class="ml-1">{{ question.questioner.name }}</p>
+      <ImageAndName :image="question.questioner.profile" :name="question.questioner.name"/>
     </div>
 
     <!-- 질문 내용 -->
