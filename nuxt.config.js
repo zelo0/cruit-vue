@@ -1,3 +1,5 @@
+var webpack = require('webpack')
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -27,6 +29,8 @@ export default {
     { src: '~plugins/vuex-persist', mode: 'client' },
     { src: '~plugins/toast-editor', mode: 'client' },
     { src: '~/plugins/vue-unicons', mode: 'client' },
+    { src: '~plugins/quill-editor', mode: 'client' },
+    { src: '~plugins/dom-purifier', mode: 'client' },
     { src: '~plugins/axios' },
   ],
 
@@ -48,11 +52,18 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'http://localhost:8080/api/v1', // local
-    baseURL: 'https://www.cruitapp.com/api/v1', // ec2
+    baseURL: 'http://localhost:8080/api/v1', // local
+    // baseURL: 'https://www.cruitapp.com/api/v1', // ec2
     credentials: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        'window.Quill': 'quill/dist/quill.js',
+        Quill: 'quill/dist/quill.js',
+      }),
+    ],
+  },
 }
