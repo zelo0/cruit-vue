@@ -14,7 +14,9 @@
     </div>
     <div class="mt-3">
       <h2>{{ post.title }}</h2>
-      <ToastViewer :initialValue="post.content" />
+      <client-only placeholder="LOADING...">
+        <MarkViewer :content="project.description" />
+      </client-only>
     </div>
   </div>
 </template>

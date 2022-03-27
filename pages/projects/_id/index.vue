@@ -69,12 +69,11 @@
         <!-- 내용 -->
         <div>
           <h2>설명</h2>
-          <!-- <client-only placeholder="LOADING..."> -->
-          <ToastViewer
-            v-if="project.description"
-            :initialValue="project.description"
-          />
-          <!-- </client-only> -->
+          <client-only placeholder="LOADING...">
+            <MarkViewer
+              :content="project.description"
+            />
+          </client-only>
         </div>
         <hr />
 
