@@ -1,6 +1,6 @@
 <template lang="">
   <div>
-    <form class="ver-gap5-grid" @submit.prevent="onsubmit">
+    <form class="ver-gap5-grid" @submit.prevent>
       <div class="font-extrabold text-xl">프로젝트 공고</div>
       <div>
         <label class="boldAndSpace" for="title">제목</label>
@@ -20,7 +20,7 @@
       <hr />
 
       <div class="my-2 text-right">
-        <button class="myBtn inline-block">등록</button>
+        <button class="myBtn inline-block" @click="onsubmit">등록</button>
       </div>
     </form>
   </div>
