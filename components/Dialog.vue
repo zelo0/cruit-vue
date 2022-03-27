@@ -5,7 +5,10 @@
     @click.prevent.stop="isDialogShown = false"
   >
     <!-- 팝업 창 -->
-    <div class="bg-white py-10 px-7 rounded-lg relative" @click.stop>
+    <div
+      class="bg-white dark:bg-night-300 py-10 px-7 rounded-lg relative"
+      @click.stop
+    >
       <div class="text-right">
         <button class="absolute right-4 top-1.5" @click="onCancelProposal">
           <client-only>
@@ -22,13 +25,13 @@
         <!-- 버튼들 -->
         <div class="flex justify-evenly mt-5 gap-5">
           <button
-            class="bg-gray-200 hover:bg-gray-300 w-full h-10 rounded-md"
+            class="bg-gray-200 hover:bg-gray-300 dark:bg-night-100 w-full h-10 rounded-md"
             @click="onAnswerYes"
           >
             예
           </button>
           <button
-            class="bg-gray-200 hover:bg-gray-300 w-full h-10 rounded-md"
+            class="bg-gray-200 hover:bg-gray-300 dark:bg-night-100 w-full h-10 rounded-md"
             @click="onAnswerNo"
           >
             아니오
