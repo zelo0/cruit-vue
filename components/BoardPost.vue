@@ -15,7 +15,7 @@
     <div class="mt-3">
       <h2>{{ post.title }}</h2>
       <client-only placeholder="LOADING...">
-        <MarkViewer :content="project.description" />
+        <MarkViewer :content="post.content" />
       </client-only>
     </div>
   </div>
