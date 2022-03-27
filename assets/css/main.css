@@ -17,7 +17,7 @@
   input[type='password'],
   select,
   textarea {
-    @apply ring-2 p-3 dark:bg-gray-500;
+    @apply ring-2 p-3 dark:bg-night-100 dark:text-white;
   }
 
   textarea {
@@ -129,5 +129,13 @@ input:checked ~ .toggle-circle {
 }
 
 input:checked ~ .toggle-path {
-  @apply bg-blue-200;
+  @apply bg-blue-200 dark:bg-purple-200;
+}
+
+/* quill-editor */
+.ql-editor {
+  @apply dark:text-white;
+}
+.ql-editor.ql-blank::before {
+  @apply text-gray-400 !important;
 }
