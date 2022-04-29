@@ -5,16 +5,17 @@
 
     <NuxtLink to="/users" class="flex justify-between">
       <h2>지금 바로 함께 할 멤버를 찾아보세요</h2>
-      <client-only>
-        <unicon name="angle-right-b" />
-      </client-only>
+      <ChevronRightIcon class="text-black dark:text-white" />
     </NuxtLink>
   </div>
 </template>
 
 <script>
+import { ChevronRightIcon } from '@vue-hero-icons/solid'
 export default {
-  name: 'ProjectModifyPage',
+  components: {
+    ChevronRightIcon,
+  },
   middleware: 'authenticated',
 }
 </script>

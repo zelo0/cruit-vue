@@ -11,9 +11,7 @@
     >
       <div class="text-right">
         <button class="absolute right-4 top-1.5" @click="onCancelProposal">
-          <client-only>
-            <unicon name="times" />
-          </client-only>
+          <XIcon class="text-black dark:text-white" />
         </button>
       </div>
 
@@ -42,7 +40,11 @@
   </div>
 </template>
 <script>
+import { XIcon } from '@vue-hero-icons/solid'
 export default {
+  components: {
+    XIcon,
+  },
   data() {
     return {
       isDialogShown: false,

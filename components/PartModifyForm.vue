@@ -61,7 +61,7 @@
       <div class="boldAndSpace">파트 멤버</div>
       
       <!-- 파트에 멤버가 있을 때 -->
-      <div v-if="part.members.length">
+      <div v-if="part.members.length" class="ver-gap2-grid">
         <div
           class="flex justify-between items-center"
           v-for="(member, index) in part.members"
@@ -75,9 +75,7 @@
             class="cursor-pointer"
             @click="onClickRemoveMember(member)"
           >
-            <client-only>
-              <unicon name="times"></unicon>
-            </client-only>
+            <XIcon class="text-black dark:text-white" />
           </div>
         </div>
       </div>
@@ -92,9 +90,7 @@
 
     <NuxtLink to="/users" class="flex justify-between">
       <h2>지금 바로 함께 할 멤버를 찾아보세요</h2>
-      <client-only>
-        <unicon name="angle-right-b" />
-      </client-only>
+      <ChevronRightIcon class="text-black dark:text-white"/>
     </NuxtLink>
   </div>
 
@@ -109,7 +105,11 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import { XIcon, ChevronRightIcon } from '@vue-hero-icons/solid'
 export default {
+  components: {
+    XIcon,ChevronRightIcon
+  },
   computed: {
     ...mapState({
       myName: (state) => state.myName,

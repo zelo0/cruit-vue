@@ -24,9 +24,7 @@
                   </div>
                 </NuxtLink>
                 <!-- 화살표 -->
-                <div>
-                  <unicon name="arrow-right" />
-                </div>
+                <ArrowNarrowRightIcon class="text-black dark:text-white" />
                 <!-- 프로젝트 -->
                 <div>
                   <NuxtLink :to="{ path: `/projects/${proposal.projectId}` }">
@@ -44,9 +42,8 @@
                   </NuxtLink>
                 </div>
                 <!-- 화살표 -->
-                <div>
-                  <unicon name="arrow-right" />
-                </div>
+                <ArrowNarrowRightIcon class="text-black dark:text-white" />
+
                 <!-- 유저 정보 -->
                 <div class="flex">
                   <span>나</span>
@@ -113,9 +110,7 @@
                 <span>나</span>
               </div>
               <!-- 화살표 -->
-              <div>
-                <unicon name="arrow-right" />
-              </div>
+              <ArrowNarrowRightIcon class="text-black dark:text-white" />
               <!-- 프로젝트 -->
               <div>
                 <NuxtLink :to="{ path: `/projects/${proposal.projectId}` }">
@@ -133,9 +128,7 @@
                 </NuxtLink>
               </div>
               <!-- 화살표 -->
-              <div>
-                <unicon name="arrow-right" />
-              </div>
+              <ArrowNarrowRightIcon class="text-black dark:text-white" />
               <!-- 유저 정보 -->
               <NuxtLink :to="{ path: `/users/${proposal.user.id}` }">
                 <div class="flex items-center">
@@ -179,7 +172,11 @@
   </div>
 </template>
 <script>
+import { ArrowNarrowRightIcon } from '@vue-hero-icons/solid'
 export default {
+  components: {
+    ArrowNarrowRightIcon,
+  },
   middleware: 'authenticated',
   data() {
     return {
