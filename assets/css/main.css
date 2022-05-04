@@ -15,9 +15,14 @@
   input[type='text'],
   input[type='email'],
   input[type='password'],
+  input[type='file'],
   select,
   textarea {
-    @apply ring-2 p-3 dark:bg-night-100 dark:text-white;
+    @apply ring-2 p-3 dark:bg-night-100 dark:text-white border rounded text-xs font-medium leading-none py-3 pl-3 my-2;
+  }
+
+  input[type='file'] {
+    @apply w-auto;
   }
 
   textarea {

@@ -16,20 +16,20 @@
     <hr />
 
     <div>
-      <span class="boldAndSpace">이메일</span>
+      <div class="boldAndSpace">이메일</div>
       <span>{{ me.email }}</span>
     </div>
     <hr />
 
     <div>
-      <label class="boldAndSpace" for="name">닉네임</label>
+      <div class="boldAndSpace">닉네임</div>
       <input id="name" type="text" v-model="me.name" class="w-1/2" />
       <button class="myBtn" @click="changeName">변경</button>
     </div>
     <hr />
 
     <div>
-      <label class="boldAndSpace" for="position">포지션</label>
+      <div class="boldAndSpace">포지션</div>
       <select id="position" v-model="me.position" class="w-1/2">
         <option value="FRONTEND">프론트엔드</option>
         <option value="BACKEND">백엔드</option>
@@ -40,7 +40,7 @@
     <hr />
 
     <div>
-      <div class="boldAndSpace" for="canBeLeader">리더 가능 여부</div>
+      <div class="boldAndSpace">리더 가능 여부</div>
       <input
         type="radio"
         :checked="me.canBeLeader"
@@ -79,7 +79,7 @@
     <hr />
 
     <div>
-      <label class="boldAndSpace" for="introducton">소개글</label>
+      <div class="boldAndSpace">소개글</div>
       <textarea
         name="introduction"
         id="introduction"
@@ -92,7 +92,7 @@
     <hr />
 
     <div>
-      <label class="boldAndSpace" for="github">github 주소</label>
+      <div class="boldAndSpace">github 주소</div>
       <input id="github" type="text" v-model="me.github" class="w-1/2" />
       <button class="myBtn" n @click="changeGithub">변경</button>
     </div>
