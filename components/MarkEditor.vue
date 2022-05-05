@@ -1,7 +1,18 @@
 <template>
-  <div class="mt-2 ring-2 dark:text-blue-200">
+  <div>
     <client-only>
-      <quill-editor v-model="content" :options="editorOption" ref="editor" />
+      <ValidationProvider rules="required" v-slot="{ errors }" name="내용">
+        <div v-if="errors" class="text-left text-sm text-red-400">
+          {{ errors[0] }}
+        </div>
+        <div class="mt-2 ring-2 dark:text-blue-200">
+          <quill-editor
+            v-model="content"
+            :options="editorOption"
+            ref="editor"
+          />
+        </div>
+      </ValidationProvider>
 
       <input
         type="file"

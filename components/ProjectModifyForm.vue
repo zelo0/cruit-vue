@@ -1,71 +1,78 @@
 <template lang="">
   <div>
-    <form class="ver-gap5-grid" @submit.prevent>
-      <h1>프로젝트 공고</h1>
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <form class="ver-gap5-grid" @submit.prevent="handleSubmit(changeContent)">
+        <h1>프로젝트 공고</h1>
 
-      <!-- 이름 변경 -->
-      <div>
-        <label class="boldAndSpace" for="title">제목</label>
-        <input
-          class="w-full mt-2"
-          type="text"
-          id="title"
-          v-model="project.name"
-        />
-      </div>
-      <hr />
-
-      <!-- 설명 변경 -->
-      <div>
-        <label class="boldAndSpace" for="title">내용</label>
-        <client-only placeholder="Loading....">
-          <MarkEditor
-            v-if="project.description"
-            ref="editor"
-            :initialValue="project.description"
-          />
-        </client-only>
-      </div>
-
-      <div class="my-2 text-right">
-        <button class="myBtn inline-block" @click="changeContent">변경</button>
-      </div>
-
-      <hr />
-
-      <!-- 상태 변경 -->
-      <div class="ver-gap2-grid">
-        <div class="boldAndSpace">상태</div>
-        <label for="togleButton" class="cursor-pointer">
-          <div class="flex gap-3 items-center">
-            <span class="cursor-pointer"> 비공개 </span>
-
-            <!-- toggle -->
-            <div class="relative">
-              <input
-                id="togleButton"
-                type="checkbox"
-                class="hidden"
-                @change="changeStatus"
-                v-model="project.status"
-                true-value="PUBLIC"
-                false-value="PRIVATE"
-              />
-              <!-- path -->
-              <div
-                class="toggle-path bg-gray-200 w-9 h-5 rounded-full shadow-inner"
-              ></div>
-              <!-- crcle -->
-              <div
-                class="toggle-circle absolute w-3.5 h-3.5 bg-white rounded-full shadow inset-y-0 left-0 transition-all duration-300 ease-in-out"
-              ></div>
+        <!-- 이름 변경 -->
+        <div>
+          <label class="boldAndSpace" for="title">제목</label>
+          <ValidationProvider rules="required" v-slot="{ errors }" name="제목">
+            <div v-if="errors" class="text-left text-sm text-red-400">
+              {{ errors[0] }}
             </div>
+            <input
+              class="w-full mt-2"
+              type="text"
+              id="title"
+              v-model="project.name"
+            />
+          </ValidationProvider>
+        </div>
+        <hr />
 
-            <span class="cursor-pointer"> 공개 </span>
-          </div>
-        </label>
-      </div>
-    </form>
+        <!-- 설명 변경 -->
+        <div>
+          <label class="boldAndSpace" for="title">내용</label>
+          <client-only placeholder="Loading....">
+            <MarkEditor
+              v-if="project.description"
+              ref="editor"
+              :initialValue="project.description"
+            />
+          </client-only>
+        </div>
+
+        <div class="my-2 text-right">
+          <button class="myBtn inline-block">변경</button>
+        </div>
+
+        <hr />
+
+        <!-- 상태 변경 -->
+        <div class="ver-gap2-grid">
+          <div class="boldAndSpace">상태</div>
+          <label for="togleButton" class="cursor-pointer">
+            <div class="flex gap-3 items-center">
+              <span class="cursor-pointer"> 비공개 </span>
+
+              <!-- toggle -->
+              <div class="relative">
+                <input
+                  id="togleButton"
+                  type="checkbox"
+                  class="hidden"
+                  @change="changeStatus"
+                  v-model="project.status"
+                  true-value="PUBLIC"
+                  false-value="PRIVATE"
+                />
+                <!-- path -->
+                <div
+                  class="toggle-path bg-gray-200 w-9 h-5 rounded-full shadow-inner"
+                ></div>
+                <!-- crcle -->
+                <div
+                  class="toggle-circle absolute w-3.5 h-3.5 bg-white rounded-full shadow inset-y-0 left-0 transition-all duration-300 ease-in-out"
+                ></div>
+              </div>
+
+              <span class="cursor-pointer"> 공개 </span>
+            </div>
+          </label>
+        </div>
+      </form>
+    </ValidationObserver>
   </div>
 </template>
 <script>
