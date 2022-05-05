@@ -133,7 +133,9 @@
               <NuxtLink :to="{ path: `/users/${proposal.user.id}` }">
                 <div class="flex items-center">
                   <Avatar :url="proposal.user.profile" />
-                  <span class="align-middle">{{ proposal.user.name }}</span>
+                  <span class="align-middle ml-4">{{
+                    proposal.user.name
+                  }}</span>
                 </div>
               </NuxtLink>
             </div>

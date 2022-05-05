@@ -1,6 +1,11 @@
 <template lang="">
   <div>
-    <textarea v-model="content" @keyup="resize" ref="textarea" />
+    <ValidationProvider rules="required" v-slot="{ errors }" name="내용">
+      <div v-if="errors" class="text-left text-sm text-red-400">
+        {{ errors[0] }}
+      </div>
+      <textarea v-model="content" @keyup="resize" ref="textarea" />
+    </ValidationProvider>
   </div>
 </template>
 <script>

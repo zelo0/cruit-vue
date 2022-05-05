@@ -31,6 +31,7 @@ export default {
     { src: '~plugins/quill-editor', mode: 'client' },
     { src: '~plugins/dom-purifier', mode: 'client' },
     { src: '~plugins/axios' },
+    { src: '~plugins/vee-validate' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -64,5 +65,6 @@ export default {
         Quill: 'quill/dist/quill.js',
       }),
     ],
+    transpile: ['vee-validate/dist/rules'],
   },
 }
