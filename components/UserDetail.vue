@@ -98,7 +98,8 @@
       <hr />
 
       <!-- 프로젝트 제안 버튼 -->
-      <div>
+      <!-- 자신의 페이지면 버튼 안 보이게 하기 -->
+      <div v-if="myName != user.name">
         <button class="w-full-btn animate-bounce" @click="onclick">
           <h2>프로젝트 제안 보내기</h2>
         </button>
@@ -108,11 +109,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
       user: null,
     }
+  },
+  computed: {
+    ...mapState({
+      myName: (state) => state.myName,
+    }),
   },
   methods: {
     onclick() {
