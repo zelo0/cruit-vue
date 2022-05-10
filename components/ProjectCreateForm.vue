@@ -1,7 +1,7 @@
 <template lang="">
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form class="ver-gap5-grid" @submit.prevent="handleSubmit(onsubmit)">
+      <form class="ver-gap5-grid" @submit.prevent="handleSubmit(onSubmit)">
         <div class="font-extrabold text-xl">프로젝트 공고</div>
         <div>
           <label class="boldAndSpace" for="title">제목</label>
@@ -40,7 +40,7 @@ export default {
     }
   },
   methods: {
-    async onsubmit() {
+    async onSubmit() {
       const description = this.$refs.editor.getHtml()
       await this.$axios
         .$post('/projects', { name: this.name, description })

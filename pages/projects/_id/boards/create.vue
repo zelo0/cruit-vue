@@ -1,7 +1,7 @@
 <template lang="">
   <div>
     <ValidationObserver v-slot="{ handleSubmit }">
-      <form class="ver-gap5-grid" @submit.prevent="handleSubmit(onsubmit)">
+      <form class="ver-gap5-grid" @submit.prevent="handleSubmit(onSubmit)">
         <div class="font-extrabold text-xl">게시판 글</div>
         <div>
           <label class="boldAndSpace" for="title">제목</label>
@@ -19,7 +19,7 @@
           <client-only placeholder="Loading....">
             <MarkEditor
               ref="editor"
-              placeholder="이 곳에 게시판 글을 작성해주세요"
+              placeholder="이 곳에 게시판 글을 작성해주'/auth/login'세요"
             />
           </client-only>
         </div>
@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    async onsubmit() {
+    async onSubmit() {
       const content = this.$refs.editor.getHtml()
       await this.$axios
         .$post('/boards', {

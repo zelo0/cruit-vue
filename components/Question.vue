@@ -16,15 +16,19 @@
       <p v-show="!isModifing">{{ question.content }}</p>
       <!-- 변경 원할 때 -->
       <TransitionSlideUpDown>
-        <form v-show="isModifing" @submit.prevent="onModify">
-          <AutoResizingTextArea
-            :initialContent="question.content"
-            ref="modifingTextarea"
-          />
-          <div class="text-right">
-            <button class="myBtn inline-block">변경</button>
-          </div>
-        </form>
+        <ValidationObserver v-slot="{ handleSubmit }">
+
+          <form v-show="isModifing" @submit.prevent="handleSubmit(onModify)">
+            <AutoResizingTextArea
+              :initialContent="question.content"
+              ref="modifingTextarea"
+            />
+            <div class="text-right">
+              <button class="myBtn inline-block">변경</button>
+            </div>
+          </form>
+          
+        </ValidationObserver>
       </TransitionSlideUpDown>
     </div>
 

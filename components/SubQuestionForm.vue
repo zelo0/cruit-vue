@@ -1,11 +1,13 @@
 <template lang="">
   <div>
-    <form @submit.prevent="onSubmit">
-      <div class="text-right">
-        <AutoResizingTextArea ref="textarea" />
-        <button class="inline-block myBtn">등록</button>
-      </div>
-    </form>
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <form @submit.prevent="handleSubmit(onSubmit)">
+        <div class="text-right">
+          <AutoResizingTextArea ref="textarea" />
+          <button class="inline-block myBtn">등록</button>
+        </div>
+      </form>
+    </ValidationObserver>
   </div>
 </template>
 <script>
