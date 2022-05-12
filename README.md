@@ -25,7 +25,7 @@
 ![image](https://user-images.githubusercontent.com/86035717/168015592-4fd7ebdb-6bca-4d7d-9722-62ad7d4fe827.png)
 ---
 ### 유저 정보 페이지
-![image](https://user-images.githubusercontent.com/86035717/168015797-a2240560-83ec-4917-a272-6fbf8229a690.png)
+![image](https://user-images.githubusercontent.com/86035717/168038087-4d5b5470-6bf4-4aaa-bb63-0978f695a6ae.png)
 ---
 ### 프로젝트별 전용 게시판
 ![image](https://user-images.githubusercontent.com/86035717/168018930-d8bed14d-ad59-47b2-bf2d-789cad67eba0.png)
