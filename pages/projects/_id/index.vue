@@ -112,7 +112,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'ProjectDetailPage',
@@ -122,6 +122,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations( {
+      setWatchingProject: 'setWatchingProject',
+    }),
     clickedProjectModifyBtn() {
       this.$router.push(`/projects/${this.$route.params.id}/modify`)
     },
@@ -227,9 +230,10 @@ export default {
       .$get(`/projects/${this.$route.params.id}`)
       .then((res) => {
         this.project = res.data
+        this.setWatchingProject(this.project)   
       })
       .catch((err) => {
-        // console.log('에러 발생')
+        console.log('에러 발생')
       })
   },
 }

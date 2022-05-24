@@ -69,13 +69,21 @@
         >
           <!-- 멤버 -->
           <PillBtn :name="member.name" :img="member.profile" />
-          <!-- 삭제 버튼 (본인은 삭제 불가) -->
-          <div
-            v-if="member.name != myName"
-            class="cursor-pointer"
-            @click="onClickRemoveMember(member)"
-          >
-            <XIcon class="text-black dark:text-white" />
+          <!-- 버튼 그룹 -->
+          <div class="flex gap-2">
+            <!-- 리더 변경 버튼 (프로젝트 제안자만 가능) -->
+            <div
+            v-if="watchingProject.proposerName == myName">
+              <button class="small-btn" @click="delegateLeader(member.id)">리더 위임</button>
+            </div>
+            <!-- 삭제 버튼 (본인은 삭제 불가) -->
+            <div
+              v-if="member.name != myName"
+              class="cursor-pointer"
+              @click="onClickRemoveMember(member)"
+            >
+              <XIcon class="text-black dark:text-white" />
+            </div>
           </div>
         </div>
       </div>
@@ -113,6 +121,7 @@ export default {
   computed: {
     ...mapState({
       myName: (state) => state.myName,
+      watchingProject: (state) => state.watchingProject,
     }),
   },
   data() {
@@ -158,6 +167,19 @@ export default {
         .catch((err) => {
           // console.log(err)
         })
+    },
+    async delegateLeader(newLeaderId) {
+      await this.$axios
+      .$patch(`/parts/leader`, {
+        partId: this.$route.params.id,
+        newLeaderId
+      })
+      .then((res) => {
+        alert("변경됐습니다")
+      })
+      .catch((err) => {
+        // console.error(err)
+      })
     },
     async removeMember() {
       await this.$axios

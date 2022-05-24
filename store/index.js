@@ -3,6 +3,10 @@ export const state = () => ({
   myPosition: '',
   notificationCount: 0,
   notifications: [],
+  watchingProject: {
+    id: -1,
+    proposerName: -1,
+  },
 })
 
 export const getters = {
@@ -23,6 +27,10 @@ export const mutations = {
   },
   setNotifications(state, notifications) {
     state.notifications = notifications
+  },
+  setWatchingProject(state, project) {
+    state.watchingProject.id = project.id
+    state.watchingProject.proposerName = project.proposer.name
   },
 }
 
